@@ -7,5 +7,24 @@
     <generator>Hugo -- 0.153.2</generator>
     <language>zh-cn</language>
     <atom:link href="https://llspublic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://llspublic.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/about/</guid>
+      <description>&lt;p&gt;Hi, I’m &lt;strong&gt;Lyuxi Liu&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I hold a master’s degree from the University of Virginia.&lt;br&gt;
+My research interests lie at the intersection of &lt;strong&gt;Digital Humanities&lt;/strong&gt;, &lt;strong&gt;Computational Social Science&lt;/strong&gt;, and &lt;strong&gt;NLP / Machine Learning&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I’m interested in how theoretical concepts, social phenomena, and institutional structures can be modeled, measured, and explored through computational and data-driven approaches.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;about-this-site&#34;&gt;About this site&lt;/h4&gt;
+&lt;p&gt;This site serves as a personal research space.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Publications&lt;/strong&gt; list peer-reviewed and accepted academic work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Projects&lt;/strong&gt; document research-oriented prototypes, tools, and experimental systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Essays&lt;/strong&gt; collect unpublished analytical and theoretical writing, including exploratory ideas and ongoing work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Most content here represents work in progress rather than finalized research output.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
