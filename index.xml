@@ -6,7 +6,15 @@
     <description>Recent content on Lyuxi Liu</description>
     <generator>Hugo -- 0.153.2</generator>
     <language>en</language>
+    <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://llspublic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的第一篇測試文章</title>
+      <link>https://llspublic.github.io/posts/hello/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/posts/hello/</guid>
+      <description>這是一篇測試文章。</description>
+    </item>
     <item>
       <title></title>
       <link>https://llspublic.github.io/posts/example1/</link>
@@ -323,7 +331,8 @@
       <description>&lt;p&gt;Hi, I’m &lt;strong&gt;Lyuxi Liu&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;I hold a master’s degree from the University of Virginia.&lt;br&gt;
 My research interests lie at the intersection of &lt;strong&gt;Digital Humanities&lt;/strong&gt;, &lt;strong&gt;Computational Social Science&lt;/strong&gt;, and &lt;strong&gt;NLP / Machine Learning&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I’m interested in how theoretical concepts, social phenomena, and institutional structures can be modeled, measured, and explored through computational and data-driven approaches.&lt;/p&gt;</description>
+&lt;p&gt;I’m interested in how theoretical concepts, social phenomena, and institutional structures can be modeled, measured, and explored through computational and data-driven approaches.&lt;/p&gt;
+&lt;p&gt;example1&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
