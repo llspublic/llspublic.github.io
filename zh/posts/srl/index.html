@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>深入研究叙事网络：从「词频统计」到「结构化行动逻辑」 | Lyuxi Liu</title>
+<title>叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变 | Lyuxi Liu</title>
 <meta name="keywords" content="Digital Humanities, Computational Social Science, NLP, Narrative Networks, Python">
 <meta name="description" content="本文深入探讨叙事网络（Narrative Network）分析范式，介绍从词袋模型到结构化事件三元组的转变，详解语义角色标注（SRL）、实体聚合、网络骨干提取等核心技术，并提供 Python 代码示例与实证应用分析。">
 <meta name="author" content="Lyuxi Liu">
@@ -73,7 +73,7 @@
 
 </script><meta property="og:url" content="https://llspublic.github.io/zh/posts/srl/">
   <meta property="og:site_name" content="Lyuxi Liu">
-  <meta property="og:title" content="深入研究叙事网络：从「词频统计」到「结构化行动逻辑」">
+  <meta property="og:title" content="叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变">
   <meta property="og:description" content="本文深入探讨叙事网络（Narrative Network）分析范式，介绍从词袋模型到结构化事件三元组的转变，详解语义角色标注（SRL）、实体聚合、网络骨干提取等核心技术，并提供 Python 代码示例与实证应用分析。">
   <meta property="og:locale" content="zh-cn">
   <meta property="og:type" content="article">
@@ -86,7 +86,7 @@
     <meta property="article:tag" content="Narrative Networks">
     <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入研究叙事网络：从「词频统计」到「结构化行动逻辑」">
+<meta name="twitter:title" content="叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变">
 <meta name="twitter:description" content="本文深入探讨叙事网络（Narrative Network）分析范式，介绍从词袋模型到结构化事件三元组的转变，详解语义角色标注（SRL）、实体聚合、网络骨干提取等核心技术，并提供 Python 代码示例与实证应用分析。">
 
 
@@ -98,7 +98,7 @@
     {
       "@type": "ListItem",
       "position":  1 ,
-      "name": "深入研究叙事网络：从「词频统计」到「结构化行动逻辑」",
+      "name": "叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变",
       "item": "https://llspublic.github.io/zh/posts/srl/"
     }
   ]
@@ -108,14 +108,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "深入研究叙事网络：从「词频统计」到「结构化行动逻辑」",
-  "name": "深入研究叙事网络：从「词频统计」到「结构化行动逻辑」",
+  "headline": "叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变",
+  "name": "叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变",
   "description": "本文深入探讨叙事网络（Narrative Network）分析范式，介绍从词袋模型到结构化事件三元组的转变，详解语义角色标注（SRL）、实体聚合、网络骨干提取等核心技术，并提供 Python 代码示例与实证应用分析。",
   "keywords": [
     "Digital Humanities", "Computational Social Science", "NLP", "Narrative Networks", "Python"
   ],
-  "articleBody": " 导言：在社会科学研究中，面对海量文本数据，我们常使用词云（Word Cloud）或主题模型（LDA）来提取热点话题。然而，这些方法仅告诉我们人们在「讨论什么」（What），却难以揭示「谁对谁做了什么」（Who did what to whom）这一社会互动的核心逻辑。\n叙事不仅仅是高频词的线性排列，更是通过事件将行动者与受体连接起来、建构社会现实的过程。本文将介绍一种新的分析范式——叙事网络（Narrative Network），并详细拆解其背后的技术实现路径。\n为什么我们需要叙事网络？ 传统的词袋模型将文本表示为无序词汇的集合，使我们无法重构句子中角色与行动间的确切关系。词频或主题分布固然能提供语料概览，但 「关键词/主题 ≠ 完整叙事」。例如，LDA 主题模型会将文本归纳为若干主题，但这些主题仅仅是词的概率分布，缺乏对叙事结构（如因果、角色互动）的显式描述。\n叙事网络（Narrative Network） 提供了一种新的分析范式：将文本视为 事件序列 而非静态词集，强调行动者、行动和受事者之间的 结构化互动。换言之，叙事网络关注 「谁」（施事者） 、 「对谁」（受事者） 、 「做了什么」（动作），从而捕捉文本中的因果脉络和责任归属。这让这种范式转变让我们得以超越话题探讨层面，深入研究语篇如何塑造社会认知与权力结构。\n范式对比：共词网络 vs. 叙事网络 分析维度 共词网络 (Co-word Network) 叙事网络 (Narrative Network) 基本单元 词汇 A – 词汇 B（共现关系） 施事者 – 动作 – 受事者（事件三元组） 连接依据 统计关联（词频/共现） 语义互动（角色关系） 网络类型 无向图（Undirected） 有向图（Directed） 可解释性 话题相关度（讨论内容） 行动逻辑（谁对谁做了什么） 叙事网络通过保留事件结构，大幅增强了对社会现实构建过程的解释力。例如，Sudhahar 等人使用新闻报道的主谓宾关系构建网络，发现美国大选语料中自发形成了支持与反对的两大阵营。总体而言，相较于传统词汇共现分析，叙事网络能更好地揭示文本背后的权力关系和因果链条，是政治传播、舆情分析等领域强有力的工具。\n第一部分：理论视角——从话题挖掘到叙事解析 文本分析正经历从「识别显性话题」向「解析隐含叙事」的范式转变。传统方法着重于 显性内容 （如高频词、主题），而叙事解析则关注 隐含结构 （如角色互动、事件逻辑）。这种转变背后有几点理论动因：\n人类是「讲故事的动物」 ：叙事被视为人类理解和组织现实的基本方式。线上的叙事动态（如话题涌现、竞争、消亡）会对现实社会产生深远影响。因此，理解网络舆论中的叙事结构有助于解读舆情走向与舆论影响。 克服词袋模型的局限 ：传统文本表示忽略了语序与句法，导致我们无法区分「狗咬人」与「人咬狗」这样意义迥异的叙事。相反，叙事分析强调谓词及其论元角色，精确捕捉「谁做了什么」的关系。 解释社会互动 ：叙事网络将文本转化为角色-事件图谱，使研究者得以从全局角度审视互动模式。例如，可透过网络中心度辨识舆论场中的核心行动者，或通过子群发现特定议题的叙事共同体。 Robert Allen 等人形象地指出，将剧情的时间流程转化为「二维网络图」，可使结构一目了然。总之，应用网络方法于叙事分析，能让我们在宏观上捕捉文本叙事的 对称性 与 结构特征，并量化分析角色间的权力互动。\n第二部分：核心技术——语义角色标注 (SRL) 语义角色标注（Semantic Role Labeling, SRL） 是构建叙事网络的基石。SRL 的任务是解析句子中谓词（通常为动词）及其相关的参与者（论元）角色，即识别「谁在何时何地对谁做了什么」。这一过程可以视为自动为句子加注剧本角色表：\n谓词（Predicate） ：通常为句子的主要动词，表示一个动作或事件。 论元（Arguments） ：与该动作相关的参与者及要素，每个论元扮演特定的语义角色（Semantic Role）。 PropBank 标注体系示例 ARG0 ：施事者（Agent），动作的发起者，对应原型施动者。例如在句子「政府推出了新政策」中， 政府 是 ARG0。 ARG1 ：受事者（Patient），动作的承受者或作用对象。上述例子中， 新政策 是 ARG1。 ARGM ：附加参数（Modifier），包括时间（TMP）、地点（LOC）、方式（MNR）等修饰信息。 透过 SRL，非结构化的自然语言被转换为结构化的事件描述。例如句子 “The CDC confirms the first coronavirus case.” 经过 SRL 解析后，可得到如下结构：\n[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]\nSRL 工具与模型 早期的 SRL 系统如 SENNA 就已能自动标注简单句子的语义角色。近年来，由于预训练语言模型（如 BERT）的出现，SRL 准确率有了大幅提升。例如 AllenNLP 平台提供了开箱即用的 SRL 模型——一个基于 BERT 的语义角色标注器。我们可以利用该模型快速对文本进行语义解析，无需从零开始训练：\nfrom allennlp.predictors import Predictor # 加载预训练的 BERT-SRL 模型（本地路径或 URL） predictor = Predictor.from_path(\"https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.11.19.tar.gz\") # 输入待解析句子 sentence = \"The CDC confirms the first coronavirus case.\" result = predictor.predict(sentence=sentence) # 输出语义角色标注结果 for verb in result['verbs']: print(verb['description']) # 预期输出: [ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]. 第三部分：叙事聚合——从微观事件到宏观网络 经 SRL 解析后，我们将获得海量 微观的叙事碎片（事件三元组）。但这些原始三元组往往非常稀疏且充斥噪音——毕竟自然语言的表达千变万化。为了从中抽取稳健的 集体叙事，需要对碎片进行聚合和归一化处理，使 相似的角色 和 同义的动作 归并为统一的节点或关系。\n1. 动词标准化（Verb Normalization） 将语料中意义相近但表达不同的动词归并到统一的语义框架下。例如将 “支持”（support）、 “背书”（endorse）、 “力挺”（back）等动词都映射为「支持类」的通用动作。为实现这一点，可以利用 VerbAtlas 等大型词汇资源。VerbAtlas 手工构建了动词同义词与框架的对应关系，将 5,649 个具体动词归纳为 466 个通用谓词框架。\n2. 论元聚类（Argument Clustering） 解决不同表述指代同一实体的问题。比如语料中出现的 “美利坚合众国”、 “美国”、 “USA” 显然是同一实体，但计算机视角下它们是不同的字符串。我们可以利用 语义嵌入 + 聚类 的方法来自动合并这些别名实体。实践中，常使用 Sentence-BERT 将每个论元短语向量化，再采用 凝聚层次聚类（Hierarchical Clustering）根据语义距离将相似实体归为一类。\nfrom sentence_transformers import SentenceTransformer from sklearn.cluster import AgglomerativeClustering # 示例实体列表（待聚类的 ARG 论元短语） entities = [\"United States\", \"USA\", \"U.S.\", \"every Asian person\", \"Asian people\"] # 1. 实体语义向量化 embedder = SentenceTransformer('all-MiniLM-L6-v2') embeddings = embedder.encode(entities) # 2. 语义聚类（凝聚层次聚类） clustering = AgglomerativeClustering( n_clusters=None, distance_threshold=0.4, affinity='cosine', linkage='average' ) labels = clustering.fit_predict(embeddings) # 输出每个实体的所属聚类标签 for entity, label in zip(entities, labels): print(f\"{entity} -\u003e Cluster {label}\") # 预期输出: # United States -\u003e Cluster 0 # USA -\u003e Cluster 0 # U.S. -\u003e Cluster 0 # every Asian person -\u003e Cluster 5 # Asian people -\u003e Cluster 5 上述两步骤将大量冗余的事件碎片进行了 语义压缩。动词的多样表达被压缩到有限的框架，实体的别名被合并为单一节点。如此处理后，我们得到了较为 精简且规范化 的 叙事事件集。\n第四部分：网络构建与可视分析 经过动词和实体的聚合标准化后，我们得到了较为「干净」的事件列表。接下来需要将这些事件组织为 叙事网络 结构，以便进一步的定量分析与可视化。\n1. 叙事网络的定义 叙事网络本质上是一个 有向带权图（directed weighted graph）。\n节点（Nodes） ：代表叙事中的 行动者（Actor）或 受事者（Actant）。通常来说，就是论元聚合后得到的实体类别。 边（Edges） ：节点之间的有向连线表示一种 叙事关系，通常对应一个谓词框架。边从 ARG0 指向 ARG1，并带有动词标签。 权重（Weights） ：每条边可赋予一个权重，表示该关系的重要性或强度。最简单的权重是出现频次，更严谨的方法则可采用 对数概率比（Log-Odds Ratio） 等统计度量，以衡量某事件相对于基线的显著性。 2. 骨干提取与降噪 现实语料库所构建的初始网络通常非常庞大且复杂。为了突出主要的叙事脉络，我们需要提取网络的 多尺度骨干（Multiscale Backbone）。该算法基于统计显著性，从加权网络中筛选出具有显著连接强度的边，大幅削减弱联系边数量，使网络结构更清晰。\nimport networkx as nx # 构建有向加权图 G = nx.DiGraph() # 假设 aggregated_triplets 是处理好的三元组列表 for (subj, verb, obj) in aggregated_triplets: if G.has_edge(subj, obj): G[subj][obj]['weight'] += 1 else: G.add_edge(subj, obj, label=verb, weight=1) # 骨干提取：仅保留权重超过平均值的边（简化示例） avg_weight = sum([d['weight'] for _, _, d in G.edges(data=True)]) / G.number_of_edges() backbone_edges = [(u, v, d) for u, v, d in G.edges(data=True) if d['weight'] \u003e= avg_weight] G_core = nx.DiGraph() G_core.add_edges_from(backbone_edges) print(\"原始边数：\", G.number_of_edges()) print(\"骨干边数：\", G_core.number_of_edges()) 3. 网络可视化与交互分析 交互式图谱 ：使用如 PyVis、D3.js 等库生成可交互的网络图，允许使用者缩放、悬停节点查看细节。 物理引擎布局 ：将节点视为带电粒子，使得连接紧密的节点自动聚拢。这种布局往往能突出网络中的 社群结构（clusters），例如将同一叙事阵营的角色聚集在图中的相近位置。 样式编码 ：利用节点大小、颜色编码节点的度中心性或类别；使用边的颜色区分不同类型的动词（如支持为蓝，冲突为红）。 第五部分：实证应用与发现 基于上述方法构建的叙事网络，已在多项研究中展示出强大的分析能力。Zhao 等人将这一框架应用于 2017 年法国大选 和 COVID-19 推特语料，有以下关键发现：\n角色形象与叙事分化 ：在法国大选推文网络中，勒庞节点周围聚集了大量带有负面意涵的动作（如「攻击」「指责」）；相对而言，马克宏节点主要连接着中性或与竞选活动相关的动作。两者对比凸显出舆论如何透过不同的动词框架来塑造候选人形象。 事件驱动的叙事变迁 ：透过对不同比时间窗的叙事网络进行观察，研究者发现 叙事转折点 往往与现实中的重大事件高度吻合。例如，在大选期间的一次电视辩论或丑闻曝光之后，网络中关键三元组的出现频率和结构发生突变。 网络结构特征 ：叙事网络的拓扑结构揭示了舆论场的 核心-边缘 分布。一小部分高中心性节点（如国家元首、流行议题）构成了网络的「核心」，而次要角色或具体事件则处于「边缘」。 第六部分：前沿方向与挑战展望 叙事网络分析作为一种新兴范式，仍有广阔的拓展空间：\n1. 跨模态叙事解析 人类的叙事不仅存在于文字中。\n视觉语义角色标注（Visual SRL） ：目标是让模型从图像中产生一个简洁的事件描述，识别「谁（ARG0）用什么工具（Instrument）对谁（ARG1）做了什么（Predicate）」。 视频事件叙事（Video SRL） ：将一段影片划分为若干时间片段，识别并串联多个连续事件，形成跨模态的叙事图谱。 2. 技术局限与研发挑战 隐喻与反讽理解 ：网络舆论中充斥着反讽，目前的 SRL 模型主要针对显性语义，可能错将讽刺当支持。 跨句叙事链抽取 ：现有方法多在单句范围内抽取事件，如何将分散在多句中的线索串联起来是下一步需要解决的问题。 大模型与生成式方法 ：利用 LLM 强大的上下文理解能力，直接阅读完整文档后 生成 一个结构化的叙事图谱，可能是未来的方向。 结语 ：叙事网络分析作为文本挖掘领域的新兴方法，正引领我们从关注词汇频率转向关注行动逻辑。借助 SRL 等技术，我们得以自动擷取大规模文本中的「谁-做了什么-给了谁」，进而构建出可量化、可视化的叙事全貌。\n参考资料 SOURCE: IC2S2 OSoMe Tutorial 2024 AUTHOR: @汤圆键盘坏了不能写论文 （小红书） [1] Zhao, W. et al. (2024). Discovering Collective Narratives Shifts in Online Discussions. ICWSM 2024. [2] Willaert, T. et al. (2023). Extracting narrative signals from public discourse: a network-based approach. Humanit. Soc. Sci. Commun. [3] Serrano, M. Á. et al. (2009). Extracting the multiscale backbone of complex weighted networks. PNAS. [4] Reimers, N., Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019. [5] Yatskar, M. et al. (2016). Situation Recognition: Visual Semantic Role Labeling for Image Understanding. CVPR 2016. [6] OSoMe Tutorial 2024 / IC2S2 Tutorial on Narrative Networks. ",
-  "wordCount" : "572",
+  "articleBody": " 导言：为什么我们需要叙事网络？ 在社会科学研究中，面对海量文本数据，我们常使用词云（Word Cloud）或主题模型（LDA）来提取热点话题。然而，这些方法仅告诉我们人们在“讨论什么”（What），却难以揭示“谁对谁做了什么”（Who did what to whom）这一社会互动的核心逻辑 [1]。叙事不仅仅是高频词的线性排列，更是通过事件将行动者与受体连接起来、建构社会现实的过程。\n传统的词袋模型将文本表示为无序词汇的集合，使我们无法重构句子中角色与行动间的确切关系 [2]。词频或主题分布固然能提供语料概览，但 “关键词/主题 ≠ 完整叙事” [3][4]。例如，LDA 主题模型 [3] 会将文本归纳为若干主题，但这些主题仅仅是词的概率分布，缺乏对叙事结构（如因果、角色互动）的显式描述 [4]。\n叙事网络（Narrative Network） 提供了一种新的分析范式：将文本视为 事件序列 而非静态词集，强调行动者、行动和受事者之间的 结构化互动 。换言之，叙事网络关注 “谁”（施事者） — “对谁”（受事者） — “做了什么”（动作） ，从而捕捉文本中的因果脉络和责任归属 [5]。这种范式转变让我们得以超越话题探讨层面，深入研究语篇如何塑造社会认知与权力结构。\n下表概括了传统共词分析与叙事网络范式的区别：\n分析维度 共词网络 (Co-word Network) 叙事网络 (Narrative Network) 基本单元 词汇 A – 词汇 B（共现关系） 施事者 – 动作 – 受事者（事件三元组） 连接依据 统计关联（词频/共现） 语义互动（角色关系） 网络类型 无向图（Undirected） 有向图（Directed） 可解释性 话题相关度（讨论内容） 行动逻辑（谁对谁做了什么） 叙事网络通过保留事件结构，大幅增强了对社会现实构建过程的解释力。例如，Sudhahar 等人使用新闻报道的主谓宾关系构建网络，发现美国大选语料中自发形成了支持与反对的两大阵营 [6]。总体而言，相较于传统词汇共现分析，叙事网络能更好地揭示文本背后的权力关系和因果链条，是政治传播、舆情分析等领域强有力的工具 [7]。\n第一部分：理论视角——从话题挖掘到叙事解析 文本分析正经历从“识别显性话题”向“解析隐含叙事”的范式转变 [8]。传统方法着重于 显性内容 （如高频词、主题），而叙事解析则关注 隐含结构 （如角色互动、事件逻辑）。这种转变背后有几点理论动因：\n人类是“讲故事的动物” ：叙事被视为人类理解和组织现实的基本方式 [9]。线上的叙事动态（如话题涌现、竞争、消亡）会对现实社会产生深远影响 [10]。因此，理解网络舆论中的叙事结构有助于解读舆情走向与舆论影响。 词袋模型的局限 ：传统文本表示忽略了语序与句法，导致我们无法区分“狗咬人”与“人咬狗”这样意义迥异的叙事。相反，叙事分析强调谓词及其论元角色，精确捕捉“谁做了什么”的关系。 解释社会互动 ：叙事网络将文本转化为角色-事件图谱，使研究者得以从全局角度审视互动模式。例如，可透过网络中心度辨识舆论场中的核心行动者，或通过子群发现特定议题的叙事共同体 [11]。 Robert Allen 等人形象地指出，将剧情的时间流程转化为“二维网络图”，可使结构一目了然 [12]。总之，应用网络方法于叙事分析，能让我们在宏观上捕捉文本叙事的 对称性 与 结构特征 ，并量化分析角色间的权力互动。\n第二部分：核心技术——语义角色标注 (SRL) 语义角色标注 （Semantic Role Labeling, SRL）是构建叙事网络的基石。SRL 的任务是解析句子中谓词（通常为动词）及其相关的参与者（论元）角色，即识别“谁在何时何地对谁做了什么”。这一过程可以视为自动为句子加注剧本角色表：\n谓词（Predicate） ：通常为句子的主要动词，表示一个动作或事件。 论元（Arguments） ：与该动作相关的参与者及要素，每个论元扮演特定的语义角色（Semantic Role）。 以 PropBank 标注体系为例，常见的语义角色包括：\nARG0 ：施事者（Agent），动作的发起者，对应原型施动者 [13]。例如在句子“政府推出了新政策”中， 政府 是 ARG0。 ARG1 ：受事者（Patient），动作的承受者或作用对象 [13]。上述例子中， 新政策 是 ARG1。 ARGM ：附加参数（Modifier），包括时间（TMP）、地点（LOC）、方式（MNR）等修饰信息，用于描述动作发生的情境。 透过 SRL，非结构化的自然语言被转换为结构化的事件描述。例如句子 “The CDC confirms the first coronavirus case.” 经过 SRL 解析后，可得到如下结构：\n谓词 ：confirm（确认） ARG0 ：The CDC（施事者） ARG1 ：the first coronavirus case（受事者） 组合起来即形成 [ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case] ，清晰地表达了“谁做了什么事” [2]。\nSRL 工具与模型\n早期的 SRL 系统如 SENNA [14] 就已能自动标注简单句子的语义角色。近年来，由于预训练语言模型（如 BERT）的出现，SRL 准确率有了大幅提升 [15]。例如 AllenNLP 平台提供了开箱即用的 SRL 模型 [16]——一个基于 BERT 的语义角色标注器 [15]。我们可以利用该模型快速对文本进行语义解析，无需从零开始训练：\n代码示例 ：使用 AllenNLP 的预训练 SRL 模型来解析句子并提取语义结构。\nfrom allennlp.predictors import Predictor # 加载预训练的 BERT-SRL 模型（本地路径或 URL） predictor = Predictor.from_path(\"srl-bert.2020.12.15.tar.gz\") # 输入待解析句子 sentence = \"The CDC confirms the first coronavirus case.\" result = predictor.predict(sentence=sentence) # 输出语义角色标注结果 for verb in result['verbs']: print(verb['description']) 预期输出 （截取关键部分）： [ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case] .\n上例中，模型成功识别出 CDC 是 ARG0 （施事者）， the first coronavirus case 是 ARG1 （受事者），动词 confirm 作为谓词 V 。这证明了预训练 SRL 模型能将自然语言自动转换为结构化的事件三元组。\n技术要点 ：为了提高 SRL 的效果，研究者们引入了多种语义资源和技巧。例如，使用更丰富的语料（如 PropBank [17] 或 FrameNet）进行模型训练，以捕捉动词的多义性；结合词嵌入与语法特征以增强模型对长句的解析能力 [18]。总之，现代 SRL 技术已相当成熟，为后续的叙事网络构建打下坚实基础。\n第三部分：叙事聚合——从微观事件到宏观网络 经 SRL 解析后，我们将获得海量 微观的叙事碎片 （事件三元组）。但这些原始三元组往往非常稀疏且充斥噪音——毕竟自然语言的表达千变万化。为了从中抽取稳健的 集体叙事 ，需要对碎片进行聚合和归一化处理，使 相似的角色 和 同义的动作 归并为统一的节点或关系。\n聚合的核心步骤包括 ：\n动词标准化（Verb Normalization） ：将语料中意义相近但表达不同的动词归并到统一的语义框架下。例如将 “支持” （support）、 “背书” （endorse）、 “力挺” （back）等动词都映射为“支持类”的通用动作。为实现这一点，可以利用 VerbAtlas 等大型词汇资源。VerbAtlas 手工构建了动词同义词与框架的对应关系，将 5,649 个具体动词归纳为 466 个通用谓词框架 [19]。例如 “You backed Macron” 和 “You endorsed Macron” 虽用词不同，但VerbAtlas会将 back.01 和 endorse.01 都映射到共享的语义框架 FOLLOW_SUPPORT_SPONSOR_FUND [19]。通过这种标准化，我们可以将语料中的 422,019 条原始三元组压缩为 418,554 条（以法国大选数据为例）[20]。 论元聚类（Argument Clustering） ：解决不同表述指代同一实体的问题。比如语料中出现的 “美利坚合众国” 、 “美国” 、 “USA” 显然是同一实体，但计算机视角下它们是不同的字符串。我们可以利用 语义嵌入+聚类 的方法来自动合并这些别名实体。实践中，常使用 Sentence-BERT （句子级别的 BERT 嵌入）将每个论元短语向量化 [21]。Sentence-BERT 是 Reimers 和 Gurevych 提出的双塔BERT架构，能够将语句映射到一个连续向量空间，使相似语句距离更近 [22]。对所有 ARG0/ARG1 论元进行嵌入后，采用 凝聚层次聚类 （Hierarchical Clustering）或 密度聚类 方法，根据语义距离将相似实体归为一类。例如，我们可以设定阈值（如余弦距离 \u003c 0.4）来逐步并合嵌入距离很近的论元短语，最终为每一组集群指定一个统一的节点ID。 上述两步骤将大量冗余的事件碎片进行了 语义压缩 。动词的多样表达被压缩到有限的框架，实体的别名被合并为单一节点。如此处理后，我们得到了较为 精简且规范化 的 叙事事件集 。\n代码示例 ：叙事聚合的实现概览（动词标准化 + 论元向量聚类）\nfrom sentence_transformers import SentenceTransformer from sklearn.cluster import AgglomerativeClustering # 范例实体列表（待聚类的 ARG 论元短语） entities = [\"United States\", \"USA\", \"U.S.\", \"every Asian person\", \"Asian people\", ...] # 1. 实体语义向量化 embedder = SentenceTransformer('all-MiniLM-L6-v2') embeddings = embedder.encode(entities) # 2. 语义聚类（凝聚层次聚类） clustering = AgglomerativeClustering(n_clusters=None, distance_threshold=0.4, affinity='cosine', linkage='average') labels = clustering.fit_predict(embeddings) # 输出每个实体的所属聚类标签 for entity, label in zip(entities, labels): print(entity, \" -\u003e Cluster\", label) 输出示例 （虚构数据）：\nUnited States -\u003e Cluster 0 USA -\u003e Cluster 0 U.S. -\u003e Cluster 0 every Asian person -\u003e Cluster 5 Asian people -\u003e Cluster 5 ... 如上所示， United States 、 USA 、 U.S. 被正确地归入了 同一聚类 （Cluster 0），而 “every Asian person” 与 “Asian people” 也合并为一类（Cluster 5）。在后续网络构建中，我们将以聚类ID替代原始文本来表示节点，从而大幅减少节点数量、降低网络复杂度。\n第四部分：网络构建与可视分析 经过动词和实体的聚合标准化后，我们得到了较为“干净”的事件列表。接下来需要将这些事件组织为 叙事网络 结构，以便进一步的定量分析与可视化。\n1. 叙事网络的定义\n叙事网络 本质上是一个 有向带权图（directed weighted graph） [23]。在我们的框架中：\n节点（Nodes） ：网络中的节点代表叙事中的 行动者 （Actor）或 受事者 （Actant）。通常来说，就是论元聚合后得到的实体类别。例如，一个节点可能代表“美国政府”或“疫苗”这样的实体。节点的重要性可以用度中心性、接近中心性等指标来度量 [24]。 边（Edges） ：节点之间的有向连线表示一种 叙事关系 ，通常对应一个谓词框架。边从 ARG0 指向 ARG1，并带有动词标签，表示“主体对客体施加了某种行为”。例如有向边 A → B （标签 attack ）表示角色 A “攻击”了角色 B。 权重（Weights） ：每条边可赋予一个权重，表示该关系的重要性或强度。最简单的权重是边对应事件在语料中的 出现频次 。更严谨的方法则可采用 对数机率比 （Log-Odds Ratio）等统计度量，以衡量某事件相对于基线的显著性 [25]。例如，Monroe 等 [25] 提出的带信息狄利克雷先验的对数比值，可用于计算某三元组在特定子语料中出现的显著性分数 [25]。 上述结构定义使叙事网络具备了丰富的分析空间：我们可以研究入度最高的节点（最常被施加行动者），或探查出现频率最高的动作（可能代表该语境下的核心叙事）。此外，透过网络 子群侦测 ，我们还能发现叙事上的阵营分化（例如支持 vs 反对的两群角色）[6]。\n2. 骨干提取与降噪\n现实语料库所构建的初始网络通常非常庞大且复杂，其中充斥大量仅出现过几次的边。为了突出主要的叙事脉络，我们需要对网络进行 降噪处理 。一种有效的方法是提取网络的 多尺度骨干（Multiscale Backbone） [26]。\n多尺度骨干提取 （Serrano 等, 2009）：该算法基于统计显著性，从加权网络中筛选出具有显著连接强度的边 [27]。具体而言，对于每个节点，假设其连接边的权重分布服从一定随机过程，计算每条边权重成为“超出随机预期”的概率，并以显著性水平 α 作为阈值保留边 [26]。透过调整 α，研究者可以在保留网络主要结构的同时，大幅削减弱联系边数量，使网络结构更清晰。\n代码示例 ：简化的网络构建与骨干过滤流程\nimport networkx as nx # 构建有向加权图 G = nx.DiGraph() for (subj, verb, obj) in aggregated_triplets: # 三元组列表 G.add_edge(subj, obj, label=verb, weight=G[subj][obj]['weight']+1 if G.has_edge(subj, obj) else 1) # 初始网络统计 print(\"原始节点数：\", G.number_of_nodes()) print(\"原始边数：\", G.number_of_edges()) # 骨干提取：仅保留权重超过平均值的边（简单示例，实际应用可用 Serrano 算法） avg_weight = sum([d['weight'] for _,_,d in G.edges(data=True)]) / G.number_of_edges() backbone_edges = [(u,v,d) for u,v,d in G.edges(data=True) if d['weight'] \u003e= avg_weight] G_core = nx.DiGraph() G_core.add_edges_from(backbone_edges) # 过滤后网络统计 print(\"骨干节点数：\", G_core.number_of_nodes()) print(\"骨干边数：\", G_core.number_of_edges()) 上述代码以简化方式示意了过滤操作：我们计算所有边的平均权重，只保留权重大于该平均值的边作为网络骨干。实际应用中，可使用更严格的统计阈值或骨干提取算法 [26] 来确保保留下来的边具有足够高的置信水平。经过过滤处理后，网络规模明显缩减，只包含最具代表性的角色互动关系，使我们能更聚焦地观察叙事主线。\n3. 网络可视化与交互分析\n构建好的叙事网络可以透过 可视化 来直观展示其结构特征。传统的节点-链接图适合描绘叙事网络，节点表示实体，箭头表示动作方向。为了增强分析效果，我们可以引入以下策略：\n交互式图谱 ：使用如 PyVis、D3.js 等库生成可交互的网络图，允许使用者缩放、悬停节点查看细节等。交互式视图特别适合大型网络的探索，使用者可通过筛选或拖拽来发现隐含模式。 物理引擎布局 ：将节点视为带电粒子，引入引力和斥力进行布局，使得连接紧密的节点自动聚拢、关系稀疏的节点远离。这种基于物理模型的布局往往能突出网络中的 社群结构 （clusters），例如将同一叙事阵营的角色聚集在图中的相近位置。 样式编码 ：可以利用节点大小、颜色编码节点的度中心性或类别；使用边的颜色、粗细表示不同类型的动词或关联强度 [23]。例如，Willaert 等人将叙事网络中的边分为支持（蓝）和冲突（红）两类，以区分正负面关系 [23]。 通过以上手段，我们最终可以获得一幅清晰、易读的 叙事网络图谱 。研究者可以在图谱中直观识别出 叙事核心 （高度连结的中心节点）以及 叙事子情节 （边缘的小型集群）。例如，在政治语料的叙事网络中，候选人可能作为红色/蓝色两大集群的中心，而特定政策议题则形成独立的小团体分布在周围。\n第五部分：实证应用与发现 基于上述方法构建的叙事网络，已在多项研究中展示出强大的分析能力。Zhao 等人将这一框架应用于 2017 年法国大选 和 COVID-19 推特语料 ，验证了其有效性 [28]。以下是几项关键发现：\n角色形象与叙事分化 ：在法国大选推文网络中，两位主要候选人（马克宏和勒庞）所处的叙事位置明显不同。勒庞节点周围聚集了大量带有负面意涵的动作（如“攻击”“指责”等），反映其在舆论叙事中饱受争议；相对而言，马克宏节点主要连接着中性或与竞选活动相关的动作（如“举行造势”“拜访选民”等），其叙事网络更多呈现政策与行动本身的讨论。两者对比凸显出舆论如何透过不同的动词框架来塑造候选人形象 [29][30]。 事件驱动的叙事变迁 ：透过对不同比时间窗的叙事网络进行观察，研究者发现 叙事转折点 往往与现实中的重大事件高度吻合。例如，在大选期间的一次电视辩论或丑闻曝光之后，网络中关键三元组（如“选民→投票→候选人”）的出现频率和结构发生突变，对应着集体叙事的重组 [31]。Zhao 等人利用变化点检测算法捕捉到了这些叙事转变时刻，并证明主要的叙事变化几乎都能与真实事件时间线对应 [32]。例如，他们在法国大选推文中侦测到的叙事转折点恰好对应了 #MacronLeaks 丑闻爆发（2017/05/03）和正式就职日（2017/05/14）等关键节点 [31]。 网络结构特征 ：叙事网络的拓扑结构揭示了舆论场的 核心-边缘 分布。一小部分高中心性节点（通常是核心行动者，如国家元首、流行议题）构成了网络的“核心”，它们之间通过多条有向边紧密相连，形成舆论叙事的主干。相反，其他次要角色或具体事件则处于“边缘”，往往以星状或树状结构附着在核心节点周围 [30]。例如，在 COVID-19 网络中，“政府”“病毒”“疫苗”等节点处于核心位置，围绕它们的是医院、民众、经济等次级节点分组，对应着不同侧面的讨论（医疗、社会、经济影响）。这种中心-边陲的图谱形态，揭示了舆论如何围绕少数关键角色展开，同时涵盖多维度议题。 综上，实证应用表明叙事网络方法能同时提供 微观的语义解读 （单个事件的角色关系）和 宏观的结构洞察 （整体叙事格局）。这使其成为理解线上舆情与社会叙事动态的有力工具，不仅描述“发生了什么”，更进一步解释“公众如何理解这些事件并编织故事”。\n第六部分：前沿方向与挑战展望 叙事网络分析作为一种新兴范式，仍有广阔的拓展空间和挑战有待解决。\n1. 跨模态叙事解析\n人类的叙事不仅存在于文字中，也透过图像、视频等多媒体形式传播。为了全面捕捉现代信息环境中的叙事，全新的 多模态叙事提取 技术正在兴起：\n视觉语义角色标注（Visual SRL） ：这一任务亦称“情境识别”（Situation Recognition），目标是让模型从图像中产生一个简洁的事件描述，包括主要行为（动词）、参与者（物件、人物）以及它们在行为中所扮演的角色 [33]。例如给定一张剪羊毛的照片，模型应识别出“男人在剪羊毛”，并标出角色：“男人（理发者）”“羊（被剪对象）”“剪刀（工具）”“牧场（地点）”等 [33]。Yatskar 等人（2016）建立了首个大规模视觉SRL数据集，涵盖500种活动和1700种语义角色，证明了在图像理解中引入语义角色标注的可行性 [33]。 视频事件叙事（Video SRL） ：进一步地，视频中包含完整的事件发生过程，如何从一段影片中识别并串联多个连续事件是一项挑战课题。最新的研究（如 Sadhu 等人, 2021）提出了 VidSitu 数据集和任务框架 [34]：将一段影片划分为若干时间片段，为每个片段标注一个动词以及多个语义角色，然后将片段之间的因果/时间关系链接起来 [34]。例如在一段10秒影片中，模型需要依序识别“人物1 开门”“人物1 呼唤宠物”“宠物 跑向 人物1”这样的事件序列，并推断角色间的连续关系。随着视频理解技术的发展，未来有望将这些从多媒体中提取的事件融入整体叙事网络，形成 跨模态的叙事图谱 。这将允许我们分析例如新闻报道文本与配发图片/视频之间的叙事一致性，发现是否存在“图文不符”或强化式的叙事搭配。 2. 技术局限与研发挑战\n尽管叙事网络分析展示了强大威力，但在实际应用中仍面临诸多挑战，需要持续攻关：\n隐喻与反讽理解 ：网络舆论中充斥着隐喻、反讽、梗文化（memes）等非字面表达。目前的 SRL 模型主要针对显性语义，对于“话里有话”的隐含意义往往束手无策。例如一句反话“真是太棒了（实则抱怨）”在语义上没有显式线索，导致模型难以判断真实倾向。这可能在叙事网络中引入偏差，错将讽刺当支持或忽略暗含的叙事线索。针对这点，未来或需结合 情感分析 与 谐拟识别 等技术，辅助解读隐含语义。 跨句叙事链抽取 ：现有方法多在单句范围内抽取事件，然而很多叙事脉络跨越多句甚至段落。例如新闻报道常在第一句介绍事件背景，后文才给出具体行动细节；又如故事叙述中因果关系可能隔着多句才能完整表达。如何让模型将这些分散在多句中的线索串联起来，构建更加完整的 跨句叙事链 ，是下一步需要解决的问题。一种潜在思路是引入 篇章级别的分析 （如共指消解、剧情曲线建模）或让模型学会总结多句的关键事件。 指代消解与角色连贯 ：叙事网络构建非常依赖实体识别的准确性。如果文本中出现大量代词（如“他”“她们”“这个”），模型需要正确解析其指代的具体对象才能将事件对应到正确的节点。然而长距离的指代消解仍是 NLP 难题之一。指代错误可能导致叙事网络中节点分裂（同一角色被视为多个节点）或错连（不同角色被误合并）。解决该问题需要更强大的共指消解模型，或在构建网络前引入人工校正步骤。 大模型与生成式方法 ：大型预训练语言模型（LLM）的崛起为叙事解析提供了新路径。与其逐句抽取再聚合，不如让模型直接阅读完整文档后 生成 一个结构化的叙事图谱。例如，Ash 等人（2023）尝试让 GPT-3 将文本总结为“谁对谁做了什么”的关系列表 [7]。生成式方法有望利用 LLM 强大的上下文理解能力，直接产出高层次的叙事表示。然而，目前这仍处于探索阶段。我们需要解决生成结果的可控性和一致性问题，确保模型不会凭空捏造不存在的关系，同时将输出转化为标准化的网络格式。 结语 叙事网络分析作为文本挖掘领域的新兴方法，正引领我们从关注词汇频率转向关注行动逻辑。借助 SRL 等技术，我们得以自动撷取大规模文本中的“谁-做了什么-给了谁”，进而构建出可量化、可视化的叙事全貌。尽管面临诸多挑战，随着多模态融合和更强AI模型的加入，叙事网络方法的前景十分广阔。我们有理由相信，在不久的将来，跨文本、图像、视频的叙事图谱将成为社会科学家理解舆论与文化叙事的强大工具，助力揭示隐藏在海量信息背后的故事脉络与人类行为逻辑。\n参考资料 （仅节选部分） 作者/来源参考 ：IC2S2_OSoMe_tutorial_2024 / @汤圆键盘坏了不能写论文\nZhao, W. et al. (2024). Discovering Collective Narratives Shifts in Online Discussions. ICWSM 2024 [35][31]. Serrano, M. Á. et al. (2009). Extracting the multiscale backbone of complex weighted networks. PNAS, 106(16): 6483–6488 [27][26]. Yatskar, M. et al. (2016). Situation Recognition: Visual Semantic Role Labeling for Image Understanding. CVPR 2016 [33]. Sadhu, A. et al. (2021). Visual Semantic Role Labeling for Video Understanding. CVPR 2021 [34]. Reimers, N., Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019 [22]. Palmer, M. et al. (2005). The Proposition Bank: An Annotated Corpus of Semantic Roles. Computational Linguistics [17]. Willaert, T. et al. (2023). Extracting narrative signals from public discourse: a network-based approach. Humanit. Soc. Sci. Commun. [5][23]. Collobert, R. et al. (2011). Natural Language Processing (almost) from Scratch. J. Mach. Learn. Res. [14]. 相关链接：\n[1] [2] [5] [6] [7] [11] [12] [17] [18] [23] Extracting narrative signals from public discourse: a network-based approach | Humanities and Social Sciences Communications: https://www.nature.com/articles/s41599-025-06017-x?error=cookies_not_supported\u0026code=3b56dc64-ea30-46da-a5bf-a565930795f7 [3] [4] [8] [9] [10] [14] [15] [16] [19] [20] [21] [25] [26] [27] [29] [30] [31] [32] [35] Discovering Collective Narratives Shifts in Online Discussions: https://www.yongyeol.com/papers/zhao2024discovering.pdf [13] VerbAtlas: a Novel Large-Scale Verbal Semantic Resource and Its Application to Semantic Role Labeling: https://aclanthology.org/D19-1058.pdf [22] Sentence Embeddings using Siamese BERT-Networks: https://aclanthology.org/D19-1410/ [24] Relatio: Text Semantics Capture Political and Economic Narratives: https://www.cambridge.org/core/journals/political-analysis/article/relatio-text-semantics-capture-political-and-economic-narratives/E72C0482A44C9A817E381B394A73E2D6 [28] GitHub - wanyingzhao/collective_narrative_shift: https://github.com/wanyingzhao/collective_narrative_shift [33] CVPR 2016 Open Access Repository: https://openaccess.thecvf.com/content_cvpr_2016/html/Yatskar_Situation_Recognition_Visual_CVPR_2016_paper.html [34] CVPR 2021 Open Access Repository: https://openaccess.thecvf.com/content/CVPR2021/html/Sadhu_Visual_Semantic_Role_Labeling_for_Video_Understanding_CVPR_2021_paper.html ",
+  "wordCount" : "957",
   "inLanguage": "zh",
   "datePublished": "2026-01-04T00:00:00Z",
   "dateModified": "2026-01-04T00:00:00Z",
@@ -192,7 +192,7 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      深入研究叙事网络：从「词频统计」到「结构化行动逻辑」
+      叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变
     </h1>
     <div class="post-meta"><span title='2026-01-04 00:00:00 +0000 UTC'>2026年1月4日</span>&nbsp;·&nbsp;<span>Lyuxi Liu</span>&nbsp;|&nbsp;<span>语言:</span>
 <ul class="i18n_list">
@@ -210,250 +210,227 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e6%88%91%e4%bb%ac%e9%9c%80%e8%a6%81%e5%8f%99%e4%ba%8b%e7%bd%91%e7%bb%9c" aria-label="为什么我们需要叙事网络？">为什么我们需要叙事网络？</a><ul>
-                        
-                <li>
-                    <a href="#%e8%8c%83%e5%bc%8f%e5%af%b9%e6%af%94%e5%85%b1%e8%af%8d%e7%bd%91%e7%bb%9c-vs-%e5%8f%99%e4%ba%8b%e7%bd%91%e7%bb%9c" aria-label="范式对比：共词网络 vs. 叙事网络">范式对比：共词网络 vs. 叙事网络</a></li></ul>
-                </li>
+                    <a href="#%e5%af%bc%e8%a8%80%e4%b8%ba%e4%bb%80%e4%b9%88%e6%88%91%e4%bb%ac%e9%9c%80%e8%a6%81%e5%8f%99%e4%ba%8b%e7%bd%91%e7%bb%9c" aria-label="导言：为什么我们需要叙事网络？">导言：为什么我们需要叙事网络？</a></li>
                 <li>
                     <a href="#%e7%ac%ac%e4%b8%80%e9%83%a8%e5%88%86%e7%90%86%e8%ae%ba%e8%a7%86%e8%a7%92%e4%bb%8e%e8%af%9d%e9%a2%98%e6%8c%96%e6%8e%98%e5%88%b0%e5%8f%99%e4%ba%8b%e8%a7%a3%e6%9e%90" aria-label="第一部分：理论视角——从话题挖掘到叙事解析">第一部分：理论视角——从话题挖掘到叙事解析</a></li>
                 <li>
-                    <a href="#%e7%ac%ac%e4%ba%8c%e9%83%a8%e5%88%86%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af%e8%af%ad%e4%b9%89%e8%a7%92%e8%89%b2%e6%a0%87%e6%b3%a8-srl" aria-label="第二部分：核心技术——语义角色标注 (SRL)">第二部分：核心技术——语义角色标注 (SRL)</a><ul>
-                        
+                    <a href="#%e7%ac%ac%e4%ba%8c%e9%83%a8%e5%88%86%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af%e8%af%ad%e4%b9%89%e8%a7%92%e8%89%b2%e6%a0%87%e6%b3%a8-srl" aria-label="第二部分：核心技术——语义角色标注 (SRL)">第二部分：核心技术——语义角色标注 (SRL)</a></li>
                 <li>
-                    <a href="#propbank-%e6%a0%87%e6%b3%a8%e4%bd%93%e7%b3%bb%e7%a4%ba%e4%be%8b" aria-label="PropBank 标注体系示例">PropBank 标注体系示例</a></li>
+                    <a href="#%e7%ac%ac%e4%b8%89%e9%83%a8%e5%88%86%e5%8f%99%e4%ba%8b%e8%81%9a%e5%90%88%e4%bb%8e%e5%be%ae%e8%a7%82%e4%ba%8b%e4%bb%b6%e5%88%b0%e5%ae%8f%e8%a7%82%e7%bd%91%e7%bb%9c" aria-label="第三部分：叙事聚合——从微观事件到宏观网络">第三部分：叙事聚合——从微观事件到宏观网络</a></li>
                 <li>
-                    <a href="#srl-%e5%b7%a5%e5%85%b7%e4%b8%8e%e6%a8%a1%e5%9e%8b" aria-label="SRL 工具与模型">SRL 工具与模型</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e7%ac%ac%e4%b8%89%e9%83%a8%e5%88%86%e5%8f%99%e4%ba%8b%e8%81%9a%e5%90%88%e4%bb%8e%e5%be%ae%e8%a7%82%e4%ba%8b%e4%bb%b6%e5%88%b0%e5%ae%8f%e8%a7%82%e7%bd%91%e7%bb%9c" aria-label="第三部分：叙事聚合——从微观事件到宏观网络">第三部分：叙事聚合——从微观事件到宏观网络</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%8a%a8%e8%af%8d%e6%a0%87%e5%87%86%e5%8c%96verb-normalization" aria-label="1. 动词标准化（Verb Normalization）">1. 动词标准化（Verb Normalization）</a></li>
-                <li>
-                    <a href="#2-%e8%ae%ba%e5%85%83%e8%81%9a%e7%b1%bbargument-clustering" aria-label="2. 论元聚类（Argument Clustering）">2. 论元聚类（Argument Clustering）</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e7%ac%ac%e5%9b%9b%e9%83%a8%e5%88%86%e7%bd%91%e7%bb%9c%e6%9e%84%e5%bb%ba%e4%b8%8e%e5%8f%af%e8%a7%86%e5%88%86%e6%9e%90" aria-label="第四部分：网络构建与可视分析">第四部分：网络构建与可视分析</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%8f%99%e4%ba%8b%e7%bd%91%e7%bb%9c%e7%9a%84%e5%ae%9a%e4%b9%89" aria-label="1. 叙事网络的定义">1. 叙事网络的定义</a></li>
-                <li>
-                    <a href="#2-%e9%aa%a8%e5%b9%b2%e6%8f%90%e5%8f%96%e4%b8%8e%e9%99%8d%e5%99%aa" aria-label="2. 骨干提取与降噪">2. 骨干提取与降噪</a></li>
-                <li>
-                    <a href="#3-%e7%bd%91%e7%bb%9c%e5%8f%af%e8%a7%86%e5%8c%96%e4%b8%8e%e4%ba%a4%e4%ba%92%e5%88%86%e6%9e%90" aria-label="3. 网络可视化与交互分析">3. 网络可视化与交互分析</a></li></ul>
-                </li>
+                    <a href="#%e7%ac%ac%e5%9b%9b%e9%83%a8%e5%88%86%e7%bd%91%e7%bb%9c%e6%9e%84%e5%bb%ba%e4%b8%8e%e5%8f%af%e8%a7%86%e5%88%86%e6%9e%90" aria-label="第四部分：网络构建与可视分析">第四部分：网络构建与可视分析</a></li>
                 <li>
                     <a href="#%e7%ac%ac%e4%ba%94%e9%83%a8%e5%88%86%e5%ae%9e%e8%af%81%e5%ba%94%e7%94%a8%e4%b8%8e%e5%8f%91%e7%8e%b0" aria-label="第五部分：实证应用与发现">第五部分：实证应用与发现</a></li>
                 <li>
-                    <a href="#%e7%ac%ac%e5%85%ad%e9%83%a8%e5%88%86%e5%89%8d%e6%b2%bf%e6%96%b9%e5%90%91%e4%b8%8e%e6%8c%91%e6%88%98%e5%b1%95%e6%9c%9b" aria-label="第六部分：前沿方向与挑战展望">第六部分：前沿方向与挑战展望</a><ul>
-                        
+                    <a href="#%e7%ac%ac%e5%85%ad%e9%83%a8%e5%88%86%e5%89%8d%e6%b2%bf%e6%96%b9%e5%90%91%e4%b8%8e%e6%8c%91%e6%88%98%e5%b1%95%e6%9c%9b" aria-label="第六部分：前沿方向与挑战展望">第六部分：前沿方向与挑战展望</a></li>
                 <li>
-                    <a href="#1-%e8%b7%a8%e6%a8%a1%e6%80%81%e5%8f%99%e4%ba%8b%e8%a7%a3%e6%9e%90" aria-label="1. 跨模态叙事解析">1. 跨模态叙事解析</a></li>
+                    <a href="#%e7%bb%93%e8%af%ad" aria-label="结语">结语</a></li>
                 <li>
-                    <a href="#2-%e6%8a%80%e6%9c%af%e5%b1%80%e9%99%90%e4%b8%8e%e7%a0%94%e5%8f%91%e6%8c%91%e6%88%98" aria-label="2. 技术局限与研发挑战">2. 技术局限与研发挑战</a></li>
-                <li>
-                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" aria-label="参考资料">参考资料</a>
+                    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99-%e4%bb%85%e8%8a%82%e9%80%89%e9%83%a8%e5%88%86" aria-label="参考资料 （仅节选部分）">参考资料 （仅节选部分）</a>
                 </li>
-            </ul>
-            </li>
             </ul>
         </div>
     </details>
 </div>
 
   <div class="post-content"><hr>
-<blockquote>
-<p><strong>导言</strong>：在社会科学研究中，面对海量文本数据，我们常使用词云（Word Cloud）或主题模型（LDA）来提取热点话题。然而，这些方法仅告诉我们人们在「讨论什么」（What），却难以揭示「谁对谁做了什么」（Who did what to whom）这一社会互动的核心逻辑。</p>
-</blockquote>
-<p>叙事不仅仅是高频词的线性排列，更是通过事件将行动者与受体连接起来、建构社会现实的过程。本文将介绍一种新的分析范式——<strong>叙事网络（Narrative Network）</strong>，并详细拆解其背后的技术实现路径。</p>
-<h2 id="为什么我们需要叙事网络">为什么我们需要叙事网络？<a hidden class="anchor" aria-hidden="true" href="#为什么我们需要叙事网络">#</a></h2>
-<p>传统的词袋模型将文本表示为无序词汇的集合，使我们无法重构句子中角色与行动间的确切关系。词频或主题分布固然能提供语料概览，但 <strong>「关键词/主题 ≠ 完整叙事」</strong>。例如，LDA 主题模型会将文本归纳为若干主题，但这些主题仅仅是词的概率分布，缺乏对叙事结构（如因果、角色互动）的显式描述。</p>
-<p><strong>叙事网络（Narrative Network）</strong> 提供了一种新的分析范式：将文本视为 <strong>事件序列</strong> 而非静态词集，强调行动者、行动和受事者之间的 <strong>结构化互动</strong>。换言之，叙事网络关注 <strong>「谁」（施事者）</strong> 、 <strong>「对谁」（受事者）</strong> 、 <strong>「做了什么」（动作）</strong>，从而捕捉文本中的因果脉络和责任归属。这让这种范式转变让我们得以超越话题探讨层面，深入研究语篇如何塑造社会认知与权力结构。</p>
-<h3 id="范式对比共词网络-vs-叙事网络">范式对比：共词网络 vs. 叙事网络<a hidden class="anchor" aria-hidden="true" href="#范式对比共词网络-vs-叙事网络">#</a></h3>
+<h2 id="导言为什么我们需要叙事网络">导言：为什么我们需要叙事网络？<a hidden class="anchor" aria-hidden="true" href="#导言为什么我们需要叙事网络">#</a></h2>
+<p>在社会科学研究中，面对海量文本数据，我们常使用词云（Word Cloud）或主题模型（LDA）来提取热点话题。然而，这些方法仅告诉我们人们在“讨论什么”（What），却难以揭示“谁对谁做了什么”（Who did what to whom）这一社会互动的核心逻辑 [1]。叙事不仅仅是高频词的线性排列，更是通过事件将行动者与受体连接起来、建构社会现实的过程。</p>
+<p>传统的词袋模型将文本表示为无序词汇的集合，使我们无法重构句子中角色与行动间的确切关系 [2]。词频或主题分布固然能提供语料概览，但 <strong>“关键词/主题 ≠ 完整叙事”</strong> [3][4]。例如，LDA 主题模型 [3] 会将文本归纳为若干主题，但这些主题仅仅是词的概率分布，缺乏对叙事结构（如因果、角色互动）的显式描述 [4]。</p>
+<p><strong>叙事网络（Narrative Network）</strong> 提供了一种新的分析范式：将文本视为 <strong>事件序列</strong> 而非静态词集，强调行动者、行动和受事者之间的 <strong>结构化互动</strong> 。换言之，叙事网络关注 <strong>“谁”（施事者）</strong> — <strong>“对谁”（受事者）</strong> — <strong>“做了什么”（动作）</strong> ，从而捕捉文本中的因果脉络和责任归属 [5]。这种范式转变让我们得以超越话题探讨层面，深入研究语篇如何塑造社会认知与权力结构。</p>
+<p>下表概括了传统共词分析与叙事网络范式的区别：</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">分析维度</th>
-          <th style="text-align: left">共词网络 (Co-word Network)</th>
-          <th style="text-align: left">叙事网络 (Narrative Network)</th>
+          <th>分析维度</th>
+          <th>共词网络 (Co-word Network)</th>
+          <th>叙事网络 (Narrative Network)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>基本单元</strong></td>
-          <td style="text-align: left">词汇 A – 词汇 B（共现关系）</td>
-          <td style="text-align: left">施事者 – 动作 – 受事者（事件三元组）</td>
+          <td><strong>基本单元</strong></td>
+          <td>词汇 A – 词汇 B（共现关系）</td>
+          <td>施事者 – 动作 – 受事者（事件三元组）</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>连接依据</strong></td>
-          <td style="text-align: left">统计关联（词频/共现）</td>
-          <td style="text-align: left">语义互动（角色关系）</td>
+          <td><strong>连接依据</strong></td>
+          <td>统计关联（词频/共现）</td>
+          <td>语义互动（角色关系）</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>网络类型</strong></td>
-          <td style="text-align: left">无向图（Undirected）</td>
-          <td style="text-align: left">有向图（Directed）</td>
+          <td><strong>网络类型</strong></td>
+          <td>无向图（Undirected）</td>
+          <td>有向图（Directed）</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>可解释性</strong></td>
-          <td style="text-align: left">话题相关度（讨论内容）</td>
-          <td style="text-align: left">行动逻辑（谁对谁做了什么）</td>
+          <td><strong>可解释性</strong></td>
+          <td>话题相关度（讨论内容）</td>
+          <td>行动逻辑（谁对谁做了什么）</td>
       </tr>
   </tbody>
 </table>
-<p>叙事网络通过保留事件结构，大幅增强了对社会现实构建过程的解释力。例如，Sudhahar 等人使用新闻报道的主谓宾关系构建网络，发现美国大选语料中自发形成了支持与反对的两大阵营。总体而言，相较于传统词汇共现分析，叙事网络能更好地揭示文本背后的权力关系和因果链条，是政治传播、舆情分析等领域强有力的工具。</p>
-<hr>
+<p>叙事网络通过保留事件结构，大幅增强了对社会现实构建过程的解释力。例如，Sudhahar 等人使用新闻报道的主谓宾关系构建网络，发现美国大选语料中自发形成了支持与反对的两大阵营 [6]。总体而言，相较于传统词汇共现分析，叙事网络能更好地揭示文本背后的权力关系和因果链条，是政治传播、舆情分析等领域强有力的工具 [7]。</p>
 <h2 id="第一部分理论视角从话题挖掘到叙事解析">第一部分：理论视角——从话题挖掘到叙事解析<a hidden class="anchor" aria-hidden="true" href="#第一部分理论视角从话题挖掘到叙事解析">#</a></h2>
-<p>文本分析正经历从「识别显性话题」向「解析隐含叙事」的范式转变。传统方法着重于 <strong>显性内容</strong> （如高频词、主题），而叙事解析则关注 <strong>隐含结构</strong> （如角色互动、事件逻辑）。这种转变背后有几点理论动因：</p>
-<ol>
-<li><strong>人类是「讲故事的动物」</strong> ：叙事被视为人类理解和组织现实的基本方式。线上的叙事动态（如话题涌现、竞争、消亡）会对现实社会产生深远影响。因此，理解网络舆论中的叙事结构有助于解读舆情走向与舆论影响。</li>
-<li><strong>克服词袋模型的局限</strong> ：传统文本表示忽略了语序与句法，导致我们无法区分「狗咬人」与「人咬狗」这样意义迥异的叙事。相反，叙事分析强调谓词及其论元角色，精确捕捉「谁做了什么」的关系。</li>
-<li><strong>解释社会互动</strong> ：叙事网络将文本转化为角色-事件图谱，使研究者得以从全局角度审视互动模式。例如，可透过网络中心度辨识舆论场中的核心行动者，或通过子群发现特定议题的叙事共同体。</li>
-</ol>
-<p>Robert Allen 等人形象地指出，将剧情的时间流程转化为「二维网络图」，可使结构一目了然。总之，应用网络方法于叙事分析，能让我们在宏观上捕捉文本叙事的 <strong>对称性</strong> 与 <strong>结构特征</strong>，并量化分析角色间的权力互动。</p>
-<hr>
+<p>文本分析正经历从“识别显性话题”向“解析隐含叙事”的范式转变 [8]。传统方法着重于 <strong>显性内容</strong> （如高频词、主题），而叙事解析则关注 <strong>隐含结构</strong> （如角色互动、事件逻辑）。这种转变背后有几点理论动因：</p>
+<ul>
+<li><strong>人类是“讲故事的动物”</strong> ：叙事被视为人类理解和组织现实的基本方式 [9]。线上的叙事动态（如话题涌现、竞争、消亡）会对现实社会产生深远影响 [10]。因此，理解网络舆论中的叙事结构有助于解读舆情走向与舆论影响。</li>
+<li><strong>词袋模型的局限</strong> ：传统文本表示忽略了语序与句法，导致我们无法区分“狗咬人”与“人咬狗”这样意义迥异的叙事。相反，叙事分析强调谓词及其论元角色，精确捕捉“谁做了什么”的关系。</li>
+<li><strong>解释社会互动</strong> ：叙事网络将文本转化为角色-事件图谱，使研究者得以从全局角度审视互动模式。例如，可透过网络中心度辨识舆论场中的核心行动者，或通过子群发现特定议题的叙事共同体 [11]。</li>
+</ul>
+<p>Robert Allen 等人形象地指出，将剧情的时间流程转化为“二维网络图”，可使结构一目了然 [12]。总之，应用网络方法于叙事分析，能让我们在宏观上捕捉文本叙事的 <strong>对称性</strong> 与 <strong>结构特征</strong> ，并量化分析角色间的权力互动。</p>
 <h2 id="第二部分核心技术语义角色标注-srl">第二部分：核心技术——语义角色标注 (SRL)<a hidden class="anchor" aria-hidden="true" href="#第二部分核心技术语义角色标注-srl">#</a></h2>
-<p><strong>语义角色标注（Semantic Role Labeling, SRL）</strong> 是构建叙事网络的基石。SRL 的任务是解析句子中谓词（通常为动词）及其相关的参与者（论元）角色，即识别「谁在何时何地对谁做了什么」。这一过程可以视为自动为句子加注剧本角色表：</p>
+<p><strong>语义角色标注</strong> （Semantic Role Labeling, SRL）是构建叙事网络的基石。SRL 的任务是解析句子中谓词（通常为动词）及其相关的参与者（论元）角色，即识别“谁在何时何地对谁做了什么”。这一过程可以视为自动为句子加注剧本角色表：</p>
 <ul>
 <li><strong>谓词（Predicate）</strong> ：通常为句子的主要动词，表示一个动作或事件。</li>
 <li><strong>论元（Arguments）</strong> ：与该动作相关的参与者及要素，每个论元扮演特定的语义角色（Semantic Role）。</li>
 </ul>
-<h3 id="propbank-标注体系示例">PropBank 标注体系示例<a hidden class="anchor" aria-hidden="true" href="#propbank-标注体系示例">#</a></h3>
+<p>以 PropBank 标注体系为例，常见的语义角色包括：</p>
 <ul>
-<li><strong>ARG0</strong> ：施事者（Agent），动作的发起者，对应原型施动者。例如在句子「政府推出了新政策」中， <strong>政府</strong> 是 ARG0。</li>
-<li><strong>ARG1</strong> ：受事者（Patient），动作的承受者或作用对象。上述例子中， <strong>新政策</strong> 是 ARG1。</li>
-<li><strong>ARGM</strong> ：附加参数（Modifier），包括时间（TMP）、地点（LOC）、方式（MNR）等修饰信息。</li>
+<li><strong>ARG0</strong> ：施事者（Agent），动作的发起者，对应原型施动者 [13]。例如在句子“政府推出了新政策”中， <strong>政府</strong> 是 ARG0。</li>
+<li><strong>ARG1</strong> ：受事者（Patient），动作的承受者或作用对象 [13]。上述例子中， <strong>新政策</strong> 是 ARG1。</li>
+<li><strong>ARGM</strong> ：附加参数（Modifier），包括时间（TMP）、地点（LOC）、方式（MNR）等修饰信息，用于描述动作发生的情境。</li>
 </ul>
 <p>透过 SRL，非结构化的自然语言被转换为结构化的事件描述。例如句子 <em>&ldquo;The CDC confirms the first coronavirus case.&rdquo;</em> 经过 SRL 解析后，可得到如下结构：</p>
-<blockquote>
-<p><strong>[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]</strong></p>
-</blockquote>
-<h3 id="srl-工具与模型">SRL 工具与模型<a hidden class="anchor" aria-hidden="true" href="#srl-工具与模型">#</a></h3>
-<p>早期的 SRL 系统如 SENNA 就已能自动标注简单句子的语义角色。近年来，由于预训练语言模型（如 BERT）的出现，SRL 准确率有了大幅提升。例如 <strong>AllenNLP</strong> 平台提供了开箱即用的 SRL 模型——一个基于 BERT 的语义角色标注器。我们可以利用该模型快速对文本进行语义解析，无需从零开始训练：</p>
+<ul>
+<li><strong>谓词</strong> ：confirm（确认）</li>
+<li><strong>ARG0</strong> ：The CDC（施事者）</li>
+<li><strong>ARG1</strong> ：the first coronavirus case（受事者）</li>
+</ul>
+<p>组合起来即形成 <code>[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]</code> ，清晰地表达了“谁做了什么事” [2]。</p>
+<p><strong>SRL 工具与模型</strong></p>
+<p>早期的 SRL 系统如 <strong>SENNA</strong> [14] 就已能自动标注简单句子的语义角色。近年来，由于预训练语言模型（如 BERT）的出现，SRL 准确率有了大幅提升 [15]。例如 <strong>AllenNLP</strong> 平台提供了开箱即用的 SRL 模型 [16]——一个基于 BERT 的语义角色标注器 [15]。我们可以利用该模型快速对文本进行语义解析，无需从零开始训练：</p>
+<p><strong>代码示例</strong> ：使用 AllenNLP 的预训练 SRL 模型来解析句子并提取语义结构。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> allennlp.predictors <span style="color:#f92672">import</span> Predictor
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 加载预训练的 BERT-SRL 模型（本地路径或 URL）</span>
-</span></span><span style="display:flex;"><span>predictor <span style="color:#f92672">=</span> Predictor<span style="color:#f92672">.</span>from_path(<span style="color:#e6db74">&#34;https://storage.googleapis.com/allennlp-public-models/bert-base-srl-2020.11.19.tar.gz&#34;</span>)
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>predictor <span style="color:#f92672">=</span> Predictor<span style="color:#f92672">.</span>from_path(<span style="color:#e6db74">&#34;srl-bert.2020.12.15.tar.gz&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 输入待解析句子</span>
 </span></span><span style="display:flex;"><span>sentence <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The CDC confirms the first coronavirus case.&#34;</span>
 </span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> predictor<span style="color:#f92672">.</span>predict(sentence<span style="color:#f92672">=</span>sentence)
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出语义角色标注结果</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> verb <span style="color:#f92672">in</span> result[<span style="color:#e6db74">&#39;verbs&#39;</span>]:
 </span></span><span style="display:flex;"><span>    print(verb[<span style="color:#e6db74">&#39;description&#39;</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 预期输出: [ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case].</span>
-</span></span></code></pre></div><h2 id="第三部分叙事聚合从微观事件到宏观网络">第三部分：叙事聚合——从微观事件到宏观网络<a hidden class="anchor" aria-hidden="true" href="#第三部分叙事聚合从微观事件到宏观网络">#</a></h2>
-<p>经 SRL 解析后，我们将获得海量 <strong>微观的叙事碎片</strong>（事件三元组）。但这些原始三元组往往非常稀疏且充斥噪音——毕竟自然语言的表达千变万化。为了从中抽取稳健的 <strong>集体叙事</strong>，需要对碎片进行聚合和归一化处理，使 <strong>相似的角色</strong> 和 <strong>同义的动作</strong> 归并为统一的节点或关系。</p>
-<h3 id="1-动词标准化verb-normalization">1. 动词标准化（Verb Normalization）<a hidden class="anchor" aria-hidden="true" href="#1-动词标准化verb-normalization">#</a></h3>
-<p>将语料中意义相近但表达不同的动词归并到统一的语义框架下。例如将 “支持”（support）、 “背书”（endorse）、 “力挺”（back）等动词都映射为「支持类」的通用动作。为实现这一点，可以利用 <strong>VerbAtlas</strong> 等大型词汇资源。VerbAtlas 手工构建了动词同义词与框架的对应关系，将 5,649 个具体动词归纳为 466 个通用谓词框架。</p>
-<h3 id="2-论元聚类argument-clustering">2. 论元聚类（Argument Clustering）<a hidden class="anchor" aria-hidden="true" href="#2-论元聚类argument-clustering">#</a></h3>
-<p>解决不同表述指代同一实体的问题。比如语料中出现的 “美利坚合众国”、 “美国”、 “USA” 显然是同一实体，但计算机视角下它们是不同的字符串。我们可以利用 <strong>语义嵌入 + 聚类</strong> 的方法来自动合并这些别名实体。实践中，常使用 <strong>Sentence-BERT</strong> 将每个论元短语向量化，再采用 <strong>凝聚层次聚类</strong>（Hierarchical Clustering）根据语义距离将相似实体归为一类。</p>
+</span></span></code></pre></div><p><strong>预期输出</strong> （截取关键部分）：
+<code>[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case] .</code></p>
+<p>上例中，模型成功识别出 <strong>CDC</strong> 是 <strong>ARG0</strong> （施事者）， <strong>the first coronavirus case</strong> 是 <strong>ARG1</strong> （受事者），动词 <strong>confirm</strong> 作为谓词 <strong>V</strong> 。这证明了预训练 SRL 模型能将自然语言自动转换为结构化的事件三元组。</p>
+<p><strong>技术要点</strong> ：为了提高 SRL 的效果，研究者们引入了多种语义资源和技巧。例如，使用更丰富的语料（如 PropBank [17] 或 FrameNet）进行模型训练，以捕捉动词的多义性；结合词嵌入与语法特征以增强模型对长句的解析能力 [18]。总之，现代 SRL 技术已相当成熟，为后续的叙事网络构建打下坚实基础。</p>
+<h2 id="第三部分叙事聚合从微观事件到宏观网络">第三部分：叙事聚合——从微观事件到宏观网络<a hidden class="anchor" aria-hidden="true" href="#第三部分叙事聚合从微观事件到宏观网络">#</a></h2>
+<p>经 SRL 解析后，我们将获得海量 <strong>微观的叙事碎片</strong> （事件三元组）。但这些原始三元组往往非常稀疏且充斥噪音——毕竟自然语言的表达千变万化。为了从中抽取稳健的 <strong>集体叙事</strong> ，需要对碎片进行聚合和归一化处理，使 <strong>相似的角色</strong> 和 <strong>同义的动作</strong> 归并为统一的节点或关系。</p>
+<p><strong>聚合的核心步骤包括</strong> ：</p>
+<ul>
+<li><strong>动词标准化（Verb Normalization）</strong> ：将语料中意义相近但表达不同的动词归并到统一的语义框架下。例如将 <strong>“支持”</strong> （support）、 <strong>“背书”</strong> （endorse）、 <strong>“力挺”</strong> （back）等动词都映射为“支持类”的通用动作。为实现这一点，可以利用 <strong>VerbAtlas</strong> 等大型词汇资源。VerbAtlas 手工构建了动词同义词与框架的对应关系，将 5,649 个具体动词归纳为 466 个通用谓词框架 [19]。例如 <em>&ldquo;You backed Macron&rdquo;</em> 和 <em>&ldquo;You endorsed Macron&rdquo;</em> 虽用词不同，但VerbAtlas会将 <code>back.01</code> 和 <code>endorse.01</code> 都映射到共享的语义框架 <code>FOLLOW_SUPPORT_SPONSOR_FUND</code> [19]。通过这种标准化，我们可以将语料中的 422,019 条原始三元组压缩为 418,554 条（以法国大选数据为例）[20]。</li>
+<li><strong>论元聚类（Argument Clustering）</strong> ：解决不同表述指代同一实体的问题。比如语料中出现的 <strong>“美利坚合众国”</strong> 、 <strong>“美国”</strong> 、 <strong>“USA”</strong> 显然是同一实体，但计算机视角下它们是不同的字符串。我们可以利用 <strong>语义嵌入+聚类</strong> 的方法来自动合并这些别名实体。实践中，常使用 <strong>Sentence-BERT</strong> （句子级别的 BERT 嵌入）将每个论元短语向量化 [21]。Sentence-BERT 是 Reimers 和 Gurevych 提出的双塔BERT架构，能够将语句映射到一个连续向量空间，使相似语句距离更近 [22]。对所有 ARG0/ARG1 论元进行嵌入后，采用 <strong>凝聚层次聚类</strong> （Hierarchical Clustering）或 <strong>密度聚类</strong> 方法，根据语义距离将相似实体归为一类。例如，我们可以设定阈值（如余弦距离 &lt; 0.4）来逐步并合嵌入距离很近的论元短语，最终为每一组集群指定一个统一的节点ID。</li>
+</ul>
+<p>上述两步骤将大量冗余的事件碎片进行了 <strong>语义压缩</strong> 。动词的多样表达被压缩到有限的框架，实体的别名被合并为单一节点。如此处理后，我们得到了较为 <strong>精简且规范化</strong> 的 <strong>叙事事件集</strong> 。</p>
+<p><strong>代码示例</strong> ：叙事聚合的实现概览（动词标准化 + 论元向量聚类）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.cluster <span style="color:#f92672">import</span> AgglomerativeClustering
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 示例实体列表（待聚类的 ARG 论元短语）</span>
-</span></span><span style="display:flex;"><span>entities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;United States&#34;</span>, <span style="color:#e6db74">&#34;USA&#34;</span>, <span style="color:#e6db74">&#34;U.S.&#34;</span>, <span style="color:#e6db74">&#34;every Asian person&#34;</span>, <span style="color:#e6db74">&#34;Asian people&#34;</span>]
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 范例实体列表（待聚类的 ARG 论元短语）</span>
+</span></span><span style="display:flex;"><span>entities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;United States&#34;</span>, <span style="color:#e6db74">&#34;USA&#34;</span>, <span style="color:#e6db74">&#34;U.S.&#34;</span>, <span style="color:#e6db74">&#34;every Asian person&#34;</span>, <span style="color:#e6db74">&#34;Asian people&#34;</span>, <span style="color:#f92672">...</span>]
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. 实体语义向量化</span>
 </span></span><span style="display:flex;"><span>embedder <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#39;all-MiniLM-L6-v2&#39;</span>)
 </span></span><span style="display:flex;"><span>embeddings <span style="color:#f92672">=</span> embedder<span style="color:#f92672">.</span>encode(entities)
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 语义聚类（凝聚层次聚类）</span>
-</span></span><span style="display:flex;"><span>clustering <span style="color:#f92672">=</span> AgglomerativeClustering(
-</span></span><span style="display:flex;"><span>    n_clusters<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>,
-</span></span><span style="display:flex;"><span>    distance_threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>,
-</span></span><span style="display:flex;"><span>    affinity<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cosine&#39;</span>,
-</span></span><span style="display:flex;"><span>    linkage<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;average&#39;</span>
-</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>clustering <span style="color:#f92672">=</span> AgglomerativeClustering(n_clusters<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, distance_threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>, affinity<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cosine&#39;</span>, linkage<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;average&#39;</span>)
 </span></span><span style="display:flex;"><span>labels <span style="color:#f92672">=</span> clustering<span style="color:#f92672">.</span>fit_predict(embeddings)
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出每个实体的所属聚类标签</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> entity, label <span style="color:#f92672">in</span> zip(entities, labels):
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>entity<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; Cluster </span><span style="color:#e6db74">{</span>label<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 预期输出:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># United States  -&gt; Cluster 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># USA            -&gt; Cluster 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># U.S.           -&gt; Cluster 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># every Asian person -&gt; Cluster 5</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Asian people   -&gt; Cluster 5</span>
-</span></span></code></pre></div><p>上述两步骤将大量冗余的事件碎片进行了 <strong>语义压缩</strong>。动词的多样表达被压缩到有限的框架，实体的别名被合并为单一节点。如此处理后，我们得到了较为 <strong>精简且规范化</strong> 的 <strong>叙事事件集</strong>。</p>
-<hr>
+</span></span><span style="display:flex;"><span>    print(entity, <span style="color:#e6db74">&#34; -&gt; Cluster&#34;</span>, label)
+</span></span></code></pre></div><p><strong>输出示例</strong> （虚构数据）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>United States  -&gt; Cluster 0
+</span></span><span style="display:flex;"><span>USA            -&gt; Cluster 0
+</span></span><span style="display:flex;"><span>U.S.           -&gt; Cluster 0
+</span></span><span style="display:flex;"><span>every Asian person -&gt; Cluster 5
+</span></span><span style="display:flex;"><span>Asian people   -&gt; Cluster 5
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>如上所示， <code>United States</code> 、 <code>USA</code> 、 <code>U.S.</code> 被正确地归入了 <strong>同一聚类</strong> （Cluster 0），而 <strong>“every Asian person”</strong> 与 <strong>“Asian people”</strong> 也合并为一类（Cluster 5）。在后续网络构建中，我们将以聚类ID替代原始文本来表示节点，从而大幅减少节点数量、降低网络复杂度。</p>
 <h2 id="第四部分网络构建与可视分析">第四部分：网络构建与可视分析<a hidden class="anchor" aria-hidden="true" href="#第四部分网络构建与可视分析">#</a></h2>
-<p>经过动词和实体的聚合标准化后，我们得到了较为「干净」的事件列表。接下来需要将这些事件组织为 <strong>叙事网络</strong> 结构，以便进一步的定量分析与可视化。</p>
-<h3 id="1-叙事网络的定义">1. 叙事网络的定义<a hidden class="anchor" aria-hidden="true" href="#1-叙事网络的定义">#</a></h3>
-<p>叙事网络本质上是一个 <strong>有向带权图（directed weighted graph）</strong>。</p>
+<p>经过动词和实体的聚合标准化后，我们得到了较为“干净”的事件列表。接下来需要将这些事件组织为 <strong>叙事网络</strong> 结构，以便进一步的定量分析与可视化。</p>
+<p><strong>1. 叙事网络的定义</strong></p>
+<p><strong>叙事网络</strong> 本质上是一个 <strong>有向带权图（directed weighted graph）</strong> [23]。在我们的框架中：</p>
 <ul>
-<li><strong>节点（Nodes）</strong> ：代表叙事中的 <strong>行动者</strong>（Actor）或 <strong>受事者</strong>（Actant）。通常来说，就是论元聚合后得到的实体类别。</li>
-<li><strong>边（Edges）</strong> ：节点之间的有向连线表示一种 <strong>叙事关系</strong>，通常对应一个谓词框架。边从 ARG0 指向 ARG1，并带有动词标签。</li>
-<li><strong>权重（Weights）</strong> ：每条边可赋予一个权重，表示该关系的重要性或强度。最简单的权重是出现频次，更严谨的方法则可采用 <strong>对数概率比（Log-Odds Ratio）</strong> 等统计度量，以衡量某事件相对于基线的显著性。</li>
+<li><strong>节点（Nodes）</strong> ：网络中的节点代表叙事中的 <strong>行动者</strong> （Actor）或 <strong>受事者</strong> （Actant）。通常来说，就是论元聚合后得到的实体类别。例如，一个节点可能代表“美国政府”或“疫苗”这样的实体。节点的重要性可以用度中心性、接近中心性等指标来度量 [24]。</li>
+<li><strong>边（Edges）</strong> ：节点之间的有向连线表示一种 <strong>叙事关系</strong> ，通常对应一个谓词框架。边从 ARG0 指向 ARG1，并带有动词标签，表示“主体对客体施加了某种行为”。例如有向边 <strong>A → B</strong> （标签 <strong>attack</strong> ）表示角色 A “攻击”了角色 B。</li>
+<li><strong>权重（Weights）</strong> ：每条边可赋予一个权重，表示该关系的重要性或强度。最简单的权重是边对应事件在语料中的 <strong>出现频次</strong> 。更严谨的方法则可采用 <strong>对数机率比</strong> （Log-Odds Ratio）等统计度量，以衡量某事件相对于基线的显著性 [25]。例如，Monroe 等 [25] 提出的带信息狄利克雷先验的对数比值，可用于计算某三元组在特定子语料中出现的显著性分数 [25]。</li>
 </ul>
-<h3 id="2-骨干提取与降噪">2. 骨干提取与降噪<a hidden class="anchor" aria-hidden="true" href="#2-骨干提取与降噪">#</a></h3>
-<p>现实语料库所构建的初始网络通常非常庞大且复杂。为了突出主要的叙事脉络，我们需要提取网络的 <strong>多尺度骨干（Multiscale Backbone）</strong>。该算法基于统计显著性，从加权网络中筛选出具有显著连接强度的边，大幅削减弱联系边数量，使网络结构更清晰。</p>
+<p>上述结构定义使叙事网络具备了丰富的分析空间：我们可以研究入度最高的节点（最常被施加行动者），或探查出现频率最高的动作（可能代表该语境下的核心叙事）。此外，透过网络 <strong>子群侦测</strong> ，我们还能发现叙事上的阵营分化（例如支持 vs 反对的两群角色）[6]。</p>
+<p><strong>2. 骨干提取与降噪</strong></p>
+<p>现实语料库所构建的初始网络通常非常庞大且复杂，其中充斥大量仅出现过几次的边。为了突出主要的叙事脉络，我们需要对网络进行 <strong>降噪处理</strong> 。一种有效的方法是提取网络的 <strong>多尺度骨干（Multiscale Backbone）</strong> [26]。</p>
+<p><strong>多尺度骨干提取</strong> （Serrano 等, 2009）：该算法基于统计显著性，从加权网络中筛选出具有显著连接强度的边 [27]。具体而言，对于每个节点，假设其连接边的权重分布服从一定随机过程，计算每条边权重成为“超出随机预期”的概率，并以显著性水平 α 作为阈值保留边 [26]。透过调整 α，研究者可以在保留网络主要结构的同时，大幅削减弱联系边数量，使网络结构更清晰。</p>
+<p><strong>代码示例</strong> ：简化的网络构建与骨干过滤流程</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 构建有向加权图</span>
 </span></span><span style="display:flex;"><span>G <span style="color:#f92672">=</span> nx<span style="color:#f92672">.</span>DiGraph()
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 假设 aggregated_triplets 是处理好的三元组列表</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (subj, verb, obj) <span style="color:#f92672">in</span> aggregated_triplets:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> G<span style="color:#f92672">.</span>has_edge(subj, obj):
-</span></span><span style="display:flex;"><span>        G[subj][obj][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        G<span style="color:#f92672">.</span>add_edge(subj, obj, label<span style="color:#f92672">=</span>verb, weight<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 骨干提取：仅保留权重超过平均值的边（简化示例）</span>
-</span></span><span style="display:flex;"><span>avg_weight <span style="color:#f92672">=</span> sum([d[<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#66d9ef">for</span> _, _, d <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges(data<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)]) <span style="color:#f92672">/</span> G<span style="color:#f92672">.</span>number_of_edges()
-</span></span><span style="display:flex;"><span>backbone_edges <span style="color:#f92672">=</span> [(u, v, d) <span style="color:#66d9ef">for</span> u, v, d <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges(data<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#66d9ef">if</span> d[<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">&gt;=</span> avg_weight]
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (subj, verb, obj) <span style="color:#f92672">in</span> aggregated_triplets:  <span style="color:#75715e"># 三元组列表</span>
+</span></span><span style="display:flex;"><span>    G<span style="color:#f92672">.</span>add_edge(subj, obj, label<span style="color:#f92672">=</span>verb, weight<span style="color:#f92672">=</span>G[subj][obj][<span style="color:#e6db74">&#39;weight&#39;</span>]<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> G<span style="color:#f92672">.</span>has_edge(subj, obj) <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 初始网络统计</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;原始节点数：&#34;</span>, G<span style="color:#f92672">.</span>number_of_nodes())
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;原始边数：&#34;</span>, G<span style="color:#f92672">.</span>number_of_edges())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 骨干提取：仅保留权重超过平均值的边（简单示例，实际应用可用 Serrano 算法）</span>
+</span></span><span style="display:flex;"><span>avg_weight <span style="color:#f92672">=</span> sum([d[<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#66d9ef">for</span> _,_,d <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges(data<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)]) <span style="color:#f92672">/</span> G<span style="color:#f92672">.</span>number_of_edges()
+</span></span><span style="display:flex;"><span>backbone_edges <span style="color:#f92672">=</span> [(u,v,d) <span style="color:#66d9ef">for</span> u,v,d <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges(data<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#66d9ef">if</span> d[<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">&gt;=</span> avg_weight]
 </span></span><span style="display:flex;"><span>G_core <span style="color:#f92672">=</span> nx<span style="color:#f92672">.</span>DiGraph()
 </span></span><span style="display:flex;"><span>G_core<span style="color:#f92672">.</span>add_edges_from(backbone_edges)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;原始边数：&#34;</span>, G<span style="color:#f92672">.</span>number_of_edges())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 过滤后网络统计</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;骨干节点数：&#34;</span>, G_core<span style="color:#f92672">.</span>number_of_nodes())
 </span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;骨干边数：&#34;</span>, G_core<span style="color:#f92672">.</span>number_of_edges())
-</span></span></code></pre></div><h3 id="3-网络可视化与交互分析">3. 网络可视化与交互分析<a hidden class="anchor" aria-hidden="true" href="#3-网络可视化与交互分析">#</a></h3>
+</span></span></code></pre></div><p>上述代码以简化方式示意了过滤操作：我们计算所有边的平均权重，只保留权重大于该平均值的边作为网络骨干。实际应用中，可使用更严格的统计阈值或骨干提取算法 [26] 来确保保留下来的边具有足够高的置信水平。经过过滤处理后，网络规模明显缩减，只包含最具代表性的角色互动关系，使我们能更聚焦地观察叙事主线。</p>
+<p><strong>3. 网络可视化与交互分析</strong></p>
+<p>构建好的叙事网络可以透过 <strong>可视化</strong> 来直观展示其结构特征。传统的节点-链接图适合描绘叙事网络，节点表示实体，箭头表示动作方向。为了增强分析效果，我们可以引入以下策略：</p>
 <ul>
-<li><strong>交互式图谱</strong> ：使用如 PyVis、D3.js 等库生成可交互的网络图，允许使用者缩放、悬停节点查看细节。</li>
-<li><strong>物理引擎布局</strong> ：将节点视为带电粒子，使得连接紧密的节点自动聚拢。这种布局往往能突出网络中的 <strong>社群结构</strong>（clusters），例如将同一叙事阵营的角色聚集在图中的相近位置。</li>
-<li><strong>样式编码</strong> ：利用节点大小、颜色编码节点的度中心性或类别；使用边的颜色区分不同类型的动词（如支持为蓝，冲突为红）。</li>
+<li><strong>交互式图谱</strong> ：使用如 PyVis、D3.js 等库生成可交互的网络图，允许使用者缩放、悬停节点查看细节等。交互式视图特别适合大型网络的探索，使用者可通过筛选或拖拽来发现隐含模式。</li>
+<li><strong>物理引擎布局</strong> ：将节点视为带电粒子，引入引力和斥力进行布局，使得连接紧密的节点自动聚拢、关系稀疏的节点远离。这种基于物理模型的布局往往能突出网络中的 <strong>社群结构</strong> （clusters），例如将同一叙事阵营的角色聚集在图中的相近位置。</li>
+<li><strong>样式编码</strong> ：可以利用节点大小、颜色编码节点的度中心性或类别；使用边的颜色、粗细表示不同类型的动词或关联强度 [23]。例如，Willaert 等人将叙事网络中的边分为支持（蓝）和冲突（红）两类，以区分正负面关系 [23]。</li>
 </ul>
-<hr>
+<p>通过以上手段，我们最终可以获得一幅清晰、易读的 <strong>叙事网络图谱</strong> 。研究者可以在图谱中直观识别出 <strong>叙事核心</strong> （高度连结的中心节点）以及 <strong>叙事子情节</strong> （边缘的小型集群）。例如，在政治语料的叙事网络中，候选人可能作为红色/蓝色两大集群的中心，而特定政策议题则形成独立的小团体分布在周围。</p>
 <h2 id="第五部分实证应用与发现">第五部分：实证应用与发现<a hidden class="anchor" aria-hidden="true" href="#第五部分实证应用与发现">#</a></h2>
-<p>基于上述方法构建的叙事网络，已在多项研究中展示出强大的分析能力。Zhao 等人将这一框架应用于 <strong>2017 年法国大选</strong> 和 <strong>COVID-19 推特语料</strong>，有以下关键发现：</p>
-<ol>
-<li><strong>角色形象与叙事分化</strong> ：在法国大选推文网络中，勒庞节点周围聚集了大量带有负面意涵的动作（如「攻击」「指责」）；相对而言，马克宏节点主要连接着中性或与竞选活动相关的动作。两者对比凸显出舆论如何透过不同的动词框架来塑造候选人形象。</li>
-<li><strong>事件驱动的叙事变迁</strong> ：透过对不同比时间窗的叙事网络进行观察，研究者发现 <strong>叙事转折点</strong> 往往与现实中的重大事件高度吻合。例如，在大选期间的一次电视辩论或丑闻曝光之后，网络中关键三元组的出现频率和结构发生突变。</li>
-<li><strong>网络结构特征</strong> ：叙事网络的拓扑结构揭示了舆论场的 <strong>核心-边缘</strong> 分布。一小部分高中心性节点（如国家元首、流行议题）构成了网络的「核心」，而次要角色或具体事件则处于「边缘」。</li>
-</ol>
-<hr>
+<p>基于上述方法构建的叙事网络，已在多项研究中展示出强大的分析能力。Zhao 等人将这一框架应用于 <strong>2017 年法国大选</strong> 和 <strong>COVID-19 推特语料</strong> ，验证了其有效性 [28]。以下是几项关键发现：</p>
+<ul>
+<li><strong>角色形象与叙事分化</strong> ：在法国大选推文网络中，两位主要候选人（马克宏和勒庞）所处的叙事位置明显不同。勒庞节点周围聚集了大量带有负面意涵的动作（如“攻击”“指责”等），反映其在舆论叙事中饱受争议；相对而言，马克宏节点主要连接着中性或与竞选活动相关的动作（如“举行造势”“拜访选民”等），其叙事网络更多呈现政策与行动本身的讨论。两者对比凸显出舆论如何透过不同的动词框架来塑造候选人形象 [29][30]。</li>
+<li><strong>事件驱动的叙事变迁</strong> ：透过对不同比时间窗的叙事网络进行观察，研究者发现 <strong>叙事转折点</strong> 往往与现实中的重大事件高度吻合。例如，在大选期间的一次电视辩论或丑闻曝光之后，网络中关键三元组（如“选民→投票→候选人”）的出现频率和结构发生突变，对应着集体叙事的重组 [31]。Zhao 等人利用变化点检测算法捕捉到了这些叙事转变时刻，并证明主要的叙事变化几乎都能与真实事件时间线对应 [32]。例如，他们在法国大选推文中侦测到的叙事转折点恰好对应了 <code>#MacronLeaks</code> 丑闻爆发（2017/05/03）和正式就职日（2017/05/14）等关键节点 [31]。</li>
+<li><strong>网络结构特征</strong> ：叙事网络的拓扑结构揭示了舆论场的 <strong>核心-边缘</strong> 分布。一小部分高中心性节点（通常是核心行动者，如国家元首、流行议题）构成了网络的“核心”，它们之间通过多条有向边紧密相连，形成舆论叙事的主干。相反，其他次要角色或具体事件则处于“边缘”，往往以星状或树状结构附着在核心节点周围 [30]。例如，在 COVID-19 网络中，“政府”“病毒”“疫苗”等节点处于核心位置，围绕它们的是医院、民众、经济等次级节点分组，对应着不同侧面的讨论（医疗、社会、经济影响）。这种中心-边陲的图谱形态，揭示了舆论如何围绕少数关键角色展开，同时涵盖多维度议题。</li>
+</ul>
+<p>综上，实证应用表明叙事网络方法能同时提供 <strong>微观的语义解读</strong> （单个事件的角色关系）和 <strong>宏观的结构洞察</strong> （整体叙事格局）。这使其成为理解线上舆情与社会叙事动态的有力工具，不仅描述“发生了什么”，更进一步解释“公众如何理解这些事件并编织故事”。</p>
 <h2 id="第六部分前沿方向与挑战展望">第六部分：前沿方向与挑战展望<a hidden class="anchor" aria-hidden="true" href="#第六部分前沿方向与挑战展望">#</a></h2>
-<p>叙事网络分析作为一种新兴范式，仍有广阔的拓展空间：</p>
-<h3 id="1-跨模态叙事解析">1. 跨模态叙事解析<a hidden class="anchor" aria-hidden="true" href="#1-跨模态叙事解析">#</a></h3>
-<p>人类的叙事不仅存在于文字中。</p>
+<p>叙事网络分析作为一种新兴范式，仍有广阔的拓展空间和挑战有待解决。</p>
+<p><strong>1. 跨模态叙事解析</strong></p>
+<p>人类的叙事不仅存在于文字中，也透过图像、视频等多媒体形式传播。为了全面捕捉现代信息环境中的叙事，全新的 <strong>多模态叙事提取</strong> 技术正在兴起：</p>
 <ul>
-<li><strong>视觉语义角色标注（Visual SRL）</strong> ：目标是让模型从图像中产生一个简洁的事件描述，识别「谁（ARG0）用什么工具（Instrument）对谁（ARG1）做了什么（Predicate）」。</li>
-<li><strong>视频事件叙事（Video SRL）</strong> ：将一段影片划分为若干时间片段，识别并串联多个连续事件，形成跨模态的叙事图谱。</li>
+<li><strong>视觉语义角色标注（Visual SRL）</strong> ：这一任务亦称“情境识别”（Situation Recognition），目标是让模型从图像中产生一个简洁的事件描述，包括主要行为（动词）、参与者（物件、人物）以及它们在行为中所扮演的角色 [33]。例如给定一张剪羊毛的照片，模型应识别出“男人在剪羊毛”，并标出角色：“男人（理发者）”“羊（被剪对象）”“剪刀（工具）”“牧场（地点）”等 [33]。Yatskar 等人（2016）建立了首个大规模视觉SRL数据集，涵盖500种活动和1700种语义角色，证明了在图像理解中引入语义角色标注的可行性 [33]。</li>
+<li><strong>视频事件叙事（Video SRL）</strong> ：进一步地，视频中包含完整的事件发生过程，如何从一段影片中识别并串联多个连续事件是一项挑战课题。最新的研究（如 Sadhu 等人, 2021）提出了 VidSitu 数据集和任务框架 [34]：将一段影片划分为若干时间片段，为每个片段标注一个动词以及多个语义角色，然后将片段之间的因果/时间关系链接起来 [34]。例如在一段10秒影片中，模型需要依序识别“人物1 开门”“人物1 呼唤宠物”“宠物 跑向 人物1”这样的事件序列，并推断角色间的连续关系。随着视频理解技术的发展，未来有望将这些从多媒体中提取的事件融入整体叙事网络，形成 <strong>跨模态的叙事图谱</strong> 。这将允许我们分析例如新闻报道文本与配发图片/视频之间的叙事一致性，发现是否存在“图文不符”或强化式的叙事搭配。</li>
 </ul>
-<h3 id="2-技术局限与研发挑战">2. 技术局限与研发挑战<a hidden class="anchor" aria-hidden="true" href="#2-技术局限与研发挑战">#</a></h3>
+<p><strong>2. 技术局限与研发挑战</strong></p>
+<p>尽管叙事网络分析展示了强大威力，但在实际应用中仍面临诸多挑战，需要持续攻关：</p>
 <ul>
-<li><strong>隐喻与反讽理解</strong> ：网络舆论中充斥着反讽，目前的 SRL 模型主要针对显性语义，可能错将讽刺当支持。</li>
-<li><strong>跨句叙事链抽取</strong> ：现有方法多在单句范围内抽取事件，如何将分散在多句中的线索串联起来是下一步需要解决的问题。</li>
-<li><strong>大模型与生成式方法</strong> ：利用 LLM 强大的上下文理解能力，直接阅读完整文档后 <strong>生成</strong> 一个结构化的叙事图谱，可能是未来的方向。</li>
+<li><strong>隐喻与反讽理解</strong> ：网络舆论中充斥着隐喻、反讽、梗文化（memes）等非字面表达。目前的 SRL 模型主要针对显性语义，对于“话里有话”的隐含意义往往束手无策。例如一句反话“真是太棒了（实则抱怨）”在语义上没有显式线索，导致模型难以判断真实倾向。这可能在叙事网络中引入偏差，错将讽刺当支持或忽略暗含的叙事线索。针对这点，未来或需结合 <strong>情感分析</strong> 与 <strong>谐拟识别</strong> 等技术，辅助解读隐含语义。</li>
+<li><strong>跨句叙事链抽取</strong> ：现有方法多在单句范围内抽取事件，然而很多叙事脉络跨越多句甚至段落。例如新闻报道常在第一句介绍事件背景，后文才给出具体行动细节；又如故事叙述中因果关系可能隔着多句才能完整表达。如何让模型将这些分散在多句中的线索串联起来，构建更加完整的 <strong>跨句叙事链</strong> ，是下一步需要解决的问题。一种潜在思路是引入 <strong>篇章级别的分析</strong> （如共指消解、剧情曲线建模）或让模型学会总结多句的关键事件。</li>
+<li><strong>指代消解与角色连贯</strong> ：叙事网络构建非常依赖实体识别的准确性。如果文本中出现大量代词（如“他”“她们”“这个”），模型需要正确解析其指代的具体对象才能将事件对应到正确的节点。然而长距离的指代消解仍是 NLP 难题之一。指代错误可能导致叙事网络中节点分裂（同一角色被视为多个节点）或错连（不同角色被误合并）。解决该问题需要更强大的共指消解模型，或在构建网络前引入人工校正步骤。</li>
+<li><strong>大模型与生成式方法</strong> ：大型预训练语言模型（LLM）的崛起为叙事解析提供了新路径。与其逐句抽取再聚合，不如让模型直接阅读完整文档后 <strong>生成</strong> 一个结构化的叙事图谱。例如，Ash 等人（2023）尝试让 GPT-3 将文本总结为“谁对谁做了什么”的关系列表 [7]。生成式方法有望利用 LLM 强大的上下文理解能力，直接产出高层次的叙事表示。然而，目前这仍处于探索阶段。我们需要解决生成结果的可控性和一致性问题，确保模型不会凭空捏造不存在的关系，同时将输出转化为标准化的网络格式。</li>
 </ul>
-<hr>
-<p><strong>结语</strong> ：叙事网络分析作为文本挖掘领域的新兴方法，正引领我们从关注词汇频率转向关注行动逻辑。借助 SRL 等技术，我们得以自动擷取大规模文本中的「谁-做了什么-给了谁」，进而构建出可量化、可视化的叙事全貌。</p>
-<h3 id="参考资料">参考资料<a hidden class="anchor" aria-hidden="true" href="#参考资料">#</a></h3>
+<h2 id="结语">结语<a hidden class="anchor" aria-hidden="true" href="#结语">#</a></h2>
+<p>叙事网络分析作为文本挖掘领域的新兴方法，正引领我们从关注词汇频率转向关注行动逻辑。借助 SRL 等技术，我们得以自动撷取大规模文本中的“谁-做了什么-给了谁”，进而构建出可量化、可视化的叙事全貌。尽管面临诸多挑战，随着多模态融合和更强AI模型的加入，叙事网络方法的前景十分广阔。我们有理由相信，在不久的将来，跨文本、图像、视频的叙事图谱将成为社会科学家理解舆论与文化叙事的强大工具，助力揭示隐藏在海量信息背后的故事脉络与人类行为逻辑。</p>
+<h2 id="参考资料-仅节选部分">参考资料 （仅节选部分）<a hidden class="anchor" aria-hidden="true" href="#参考资料-仅节选部分">#</a></h2>
+<p><strong>作者/来源参考</strong> ：IC2S2_OSoMe_tutorial_2024 / @汤圆键盘坏了不能写论文</p>
 <ul>
-<li>SOURCE: IC2S2 OSoMe Tutorial 2024</li>
-<li>AUTHOR: @汤圆键盘坏了不能写论文 （小红书）</li>
-<li>[1] Zhao, W. et al. (2024). <em>Discovering Collective Narratives Shifts in Online Discussions</em>. ICWSM 2024.</li>
-<li>[2] Willaert, T. et al. (2023). <em>Extracting narrative signals from public discourse: a network-based approach</em>. Humanit. Soc. Sci. Commun.</li>
-<li>[3] Serrano, M. Á. et al. (2009). <em>Extracting the multiscale backbone of complex weighted networks</em>. PNAS.</li>
-<li>[4] Reimers, N., Gurevych, I. (2019). <em>Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks</em>. EMNLP 2019.</li>
-<li>[5] Yatskar, M. et al. (2016). <em>Situation Recognition: Visual Semantic Role Labeling for Image Understanding</em>. CVPR 2016.</li>
-<li>[6] OSoMe Tutorial 2024 / IC2S2 Tutorial on Narrative Networks.</li>
+<li>Zhao, W. et al. (2024). <strong>Discovering Collective Narratives Shifts in Online Discussions</strong>. ICWSM 2024 [35][31].</li>
+<li>Serrano, M. Á. et al. (2009). <strong>Extracting the multiscale backbone of complex weighted networks</strong>. PNAS, 106(16): 6483–6488 [27][26].</li>
+<li>Yatskar, M. et al. (2016). <strong>Situation Recognition: Visual Semantic Role Labeling for Image Understanding</strong>. CVPR 2016 [33].</li>
+<li>Sadhu, A. et al. (2021). <strong>Visual Semantic Role Labeling for Video Understanding</strong>. CVPR 2021 [34].</li>
+<li>Reimers, N., Gurevych, I. (2019). <strong>Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks</strong>. EMNLP 2019 [22].</li>
+<li>Palmer, M. et al. (2005). <strong>The Proposition Bank: An Annotated Corpus of Semantic Roles</strong>. Computational Linguistics [17].</li>
+<li>Willaert, T. et al. (2023). <strong>Extracting narrative signals from public discourse: a network-based approach</strong>. Humanit. Soc. Sci. Commun. [5][23].</li>
+<li>Collobert, R. et al. (2011). <strong>Natural Language Processing (almost) from Scratch</strong>. J. Mach. Learn. Res. [14].</li>
+</ul>
+<p><strong>相关链接：</strong></p>
+<ul>
+<li>[1] [2] [5] [6] [7] [11] [12] [17] [18] [23] Extracting narrative signals from public discourse: a network-based approach | Humanities and Social Sciences Communications: <a href="https://www.nature.com/articles/s41599-025-06017-x?error=cookies_not_supported&amp;code=3b56dc64-ea30-46da-a5bf-a565930795f7">https://www.nature.com/articles/s41599-025-06017-x?error=cookies_not_supported&amp;code=3b56dc64-ea30-46da-a5bf-a565930795f7</a></li>
+<li>[3] [4] [8] [9] [10] [14] [15] [16] [19] [20] [21] [25] [26] [27] [29] [30] [31] [32] [35] Discovering Collective Narratives Shifts in Online Discussions: <a href="https://www.yongyeol.com/papers/zhao2024discovering.pdf">https://www.yongyeol.com/papers/zhao2024discovering.pdf</a></li>
+<li>[13] VerbAtlas: a Novel Large-Scale Verbal Semantic Resource and Its Application to Semantic Role Labeling: <a href="https://aclanthology.org/D19-1058.pdf">https://aclanthology.org/D19-1058.pdf</a></li>
+<li>[22] Sentence Embeddings using Siamese BERT-Networks: <a href="https://aclanthology.org/D19-1410/">https://aclanthology.org/D19-1410/</a></li>
+<li>[24] Relatio: Text Semantics Capture Political and Economic Narratives: <a href="https://www.cambridge.org/core/journals/political-analysis/article/relatio-text-semantics-capture-political-and-economic-narratives/E72C0482A44C9A817E381B394A73E2D6">https://www.cambridge.org/core/journals/political-analysis/article/relatio-text-semantics-capture-political-and-economic-narratives/E72C0482A44C9A817E381B394A73E2D6</a></li>
+<li>[28] GitHub - wanyingzhao/collective_narrative_shift: <a href="https://github.com/wanyingzhao/collective_narrative_shift">https://github.com/wanyingzhao/collective_narrative_shift</a></li>
+<li>[33] CVPR 2016 Open Access Repository: <a href="https://openaccess.thecvf.com/content_cvpr_2016/html/Yatskar_Situation_Recognition_Visual_CVPR_2016_paper.html">https://openaccess.thecvf.com/content_cvpr_2016/html/Yatskar_Situation_Recognition_Visual_CVPR_2016_paper.html</a></li>
+<li>[34] CVPR 2021 Open Access Repository: <a href="https://openaccess.thecvf.com/content/CVPR2021/html/Sadhu_Visual_Semantic_Role_Labeling_for_Video_Understanding_CVPR_2021_paper.html">https://openaccess.thecvf.com/content/CVPR2021/html/Sadhu_Visual_Semantic_Role_Labeling_for_Video_Understanding_CVPR_2021_paper.html</a></li>
 </ul>
 
 
