@@ -23,6 +23,13 @@
       <description></description>
     </item>
     <item>
+      <title>Fake News Detection</title>
+      <link>https://llspublic.github.io/tags/fake-news-detection/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/fake-news-detection/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Narrative Networks</title>
       <link>https://llspublic.github.io/tags/narrative-networks/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
@@ -41,6 +48,13 @@
       <link>https://llspublic.github.io/tags/python/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://llspublic.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RAG</title>
+      <link>https://llspublic.github.io/tags/rag/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/rag/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Digital Humanities on Lyuxi Liu</title>
-    <link>https://llspublic.github.io/tags/digital-humanities/</link>
-    <description>Recent content in Digital Humanities on Lyuxi Liu</description>
+    <title>RAG on Lyuxi Liu</title>
+    <link>https://llspublic.github.io/tags/rag/</link>
+    <description>Recent content in RAG on Lyuxi Liu</description>
     <generator>Hugo -- 0.153.2</generator>
     <language>en</language>
     <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://llspublic.github.io/tags/digital-humanities/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Narrative Networks and SRL 101: A Paradigm Shift from &#39;Word Frequency Statistics&#39; to &#39;Structured Action Logic&#39; </title>
-      <link>https://llspublic.github.io/posts/srl/</link>
-      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://llspublic.github.io/posts/srl/</guid>
-      <description>This article provides an in-depth overview of the Narrative Network paradigm, explaining the shift from bag-of-words models to structured event triplets. It details core techniques such as Semantic Role Labeling (SRL), entity aggregation, and network backbone extraction, and includes Python code examples and empirical application analyses.</description>
-    </item>
+    <atom:link href="https://llspublic.github.io/tags/rag/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Retrieval-Augmented Detection of Disinformation: Theory, Technology, and Practical Tutorial</title>
       <link>https://llspublic.github.io/posts/rag/</link>

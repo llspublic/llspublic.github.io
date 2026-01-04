@@ -15,5 +15,12 @@
       <guid>https://llspublic.github.io/posts/srl/</guid>
       <description>This article provides an in-depth overview of the Narrative Network paradigm, explaining the shift from bag-of-words models to structured event triplets. It details core techniques such as Semantic Role Labeling (SRL), entity aggregation, and network backbone extraction, and includes Python code examples and empirical application analyses.</description>
     </item>
+    <item>
+      <title>Retrieval-Augmented Detection of Disinformation: Theory, Technology, and Practical Tutorial</title>
+      <link>https://llspublic.github.io/posts/rag/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/posts/rag/</guid>
+      <description>This article provides a systematic introduction to the theoretical mechanisms of Information Disorder for communication researchers, detailing the evolution from end-to-end classification to the &amp;lsquo;Retrieve-then-Verify&amp;rsquo; paradigm. It covers core technologies including BM25S sparse retrieval, semantic vector retrieval, NLI inference, and G-Eval explanation generation, accompanied by complete Python practical code and case studies.</description>
+    </item>
   </channel>
 </rss>
