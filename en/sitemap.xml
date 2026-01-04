@@ -2,40 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://llspublic.github.io/en/categories/</loc>
+    <loc>https://llspublic.github.io/posts/example1/</loc>
+  </url><url>
+    <loc>https://llspublic.github.io/about/</loc>
+  </url><url>
+    <loc>https://llspublic.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
                 href="https://llspublic.github.io/categories/"
                 />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://llspublic.github.io/en/categories/"
-                />
   </url><url>
-    <loc>https://llspublic.github.io/en/</loc>
+    <loc>https://llspublic.github.io/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
                 href="https://llspublic.github.io/"
                 />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://llspublic.github.io/en/"
-                />
   </url><url>
-    <loc>https://llspublic.github.io/en/tags/</loc>
+    <loc>https://llspublic.github.io/posts/</loc>
+  </url><url>
+    <loc>https://llspublic.github.io/projects/</loc>
+  </url><url>
+    <loc>https://llspublic.github.io/publications/</loc>
+  </url><url>
+    <loc>https://llspublic.github.io/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://llspublic.github.io/tags/"
+                href="https://llspublic.github.io/zh/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://llspublic.github.io/en/tags/"
+                href="https://llspublic.github.io/tags/"
                 />
   </url>
 </urlset>
