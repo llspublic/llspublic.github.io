@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://llspublic.github.io/zh/tags/digital-humanities/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>虚假信息检索增强检测：理论、技术与实战教程</title>
+      <link>https://llspublic.github.io/zh/posts/rag/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/zh/posts/rag/</guid>
+      <description>本文面向传播学研究者，系统介绍信息失序（Information Disorder）的理论机制，详述从端到端分类到“检索-验证”范式的演化。涵盖 BM25S 稀疏检索、语义向量检索、NLI 推理及 G-Eval 解释生成等核心技术，并提供完整的 Python 实战代码与案例分析。</description>
+    </item>
+    <item>
       <title>叙事网络与 SRL 入门：从“词频统计”到“结构化行动逻辑”的范式转变</title>
       <link>https://llspublic.github.io/zh/posts/srl/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>

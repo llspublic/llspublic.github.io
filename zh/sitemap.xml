@@ -28,6 +28,9 @@
                 href="https://llspublic.github.io/zh/tags/digital-humanities/"
                 />
   </url><url>
+    <loc>https://llspublic.github.io/zh/tags/fake-news-detection/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://llspublic.github.io/zh/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -80,6 +83,9 @@
                 href="https://llspublic.github.io/zh/tags/python/"
                 />
   </url><url>
+    <loc>https://llspublic.github.io/zh/tags/rag/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://llspublic.github.io/zh/tags/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -92,6 +98,9 @@
                 hreflang="zh-cn"
                 href="https://llspublic.github.io/zh/tags/"
                 />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/posts/rag/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://llspublic.github.io/zh/posts/srl/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
