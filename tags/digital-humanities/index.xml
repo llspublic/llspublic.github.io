@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://llspublic.github.io/tags/digital-humanities/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>深入研究敘事網絡：從「詞頻統計」到「結構化行動邏輯」</title>
+      <title>深入研究叙事网络：从「词频统计」到「结构化行动逻辑」</title>
       <link>https://llspublic.github.io/posts/srl/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://llspublic.github.io/posts/srl/</guid>
-      <description>本文深入探討敘事網絡（Narrative Network）分析範式，介紹從詞袋模型到結構化事件三元組的轉變，詳解語義角色標注（SRL）、實體聚合、網絡骨幹提取等核心技術，並提供 Python 代碼示例與實證應用分析。</description>
+      <description>本文深入探讨叙事网络（Narrative Network）分析范式，介绍从词袋模型到结构化事件三元组的转变，详解语义角色标注（SRL）、实体聚合、网络骨干提取等核心技术，并提供 Python 代码示例与实证应用分析。</description>
     </item>
   </channel>
 </rss>
