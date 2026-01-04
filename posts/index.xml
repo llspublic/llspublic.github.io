@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Lyuxi Liu</title>
-    <link>https://llspublic.github.io/</link>
-    <description>Recent content on Lyuxi Liu</description>
+    <title>Posts on Lyuxi Liu</title>
+    <link>https://llspublic.github.io/posts/</link>
+    <description>Recent content in Posts on Lyuxi Liu</description>
     <generator>Hugo -- 0.153.2</generator>
     <language>zh-cn</language>
-    <atom:link href="https://llspublic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://llspublic.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>https://llspublic.github.io/posts/example1/</link>
@@ -314,16 +314,6 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;加載預訓練的-bert-srl-模型本地路徑或-url&#34;&gt;加載預訓練的 BERT-SRL 模型（本地路徑或 URL）&lt;/h1&gt;
 &lt;p&gt;predictor = Predictor.from_path(&amp;ldquo;srl-bert.2020.12.15.tar.gz&amp;rdquo;)&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>https://llspublic.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://llspublic.github.io/about/</guid>
-      <description>&lt;p&gt;Hi, I’m &lt;strong&gt;Lyuxi Liu&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I hold a master’s degree from the University of Virginia.&lt;br&gt;
-My research interests lie at the intersection of &lt;strong&gt;Digital Humanities&lt;/strong&gt;, &lt;strong&gt;Computational Social Science&lt;/strong&gt;, and &lt;strong&gt;NLP / Machine Learning&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I’m interested in how theoretical concepts, social phenomena, and institutional structures can be modeled, measured, and explored through computational and data-driven approaches.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

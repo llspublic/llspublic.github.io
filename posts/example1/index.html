@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Lyuxi Liu</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+
+    body {
+        font-family: &quot;Courier New&quot;, Courier, &quot;Lucida Sans Typewriter&quot;, &quot;Lucida Typewriter&quot;, monospace;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 60px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* --- 結構樣式 --- */
+    
+    /* 頂部導航 */
+    .back-nav {
+        margin-bottom: 50px;
+        font-size: 13px;
+    }
+
+    /* 文章頭部 */
+    header {
+        margin-bottom: 60px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .meta-info {
+        font-size: 13px;
+        color: #555;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* 正文排版 */
+    .content {
+        margin-bottom: 80px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 60px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    /* 列表樣式 */
+    ul, ol {
+        margin-bottom: 25px;
+        padding-left: 25px;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+
+    /* 引用樣式 */
+    blockquote {
+        border-left: 4px solid #000;
+        padding-left: 20px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #444;
+        background-color: #f9f9f9;
+        padding: 15px;
+    }
+
+    /* 表格樣式 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        font-size: 13px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    /* 代碼塊樣式 */
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #000;
+        padding: 20px;
+        overflow-x: auto;
+        margin: 30px 0;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    code {
+        font-family: &quot;Courier New&quot;, Courier, monospace;
+    }
+
+    /* 圖片佔位符 */
+    .img-placeholder {
+        width: 100%;
+        border: 1px dashed #000;
+        padding: 20px;
+        margin: 35px 0;
+        text-align: center;
+        background-color: #fff;
+    }
+    
+    .caption {
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+        color: #444;
+    }
+
+    /* 參考文獻區域 */
+    .references {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 4px double #000;
+        font-size: 12px;
+        color: #333;
+    }
+    
+    .ref-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .ref-item {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        text-indent: -20px; /* 懸掛縮進 */
+    }
+
+    /* 移動端適配 */
+    @media (max-width: 600px) {
+        body { padding: 30px 20px; }
+        h1 { font-size: 18px; }
+        table { font-size: 11px; }
+        th, td { padding: 8px; }
+    }
+&lt;/style&gt;
+
+
+&lt;nav class=&quot;back-nav&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;&amp;lt; back to index&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;header&gt;
+    &lt;h1&gt;敘事網絡與 SRL 入門：&lt;br&gt;從「詞頻統計」到「結構化行動邏輯」的範式轉變&lt;/h1&gt;
+    &lt;div class=&quot;meta-info&quot;&gt;
+        &lt;span&gt;SOURCE: IC2S2 OSoMe Tutorial 2024&lt;/span&gt;
+        &lt;span&gt;AUTHOR: @湯圓鍵盤壞了不能寫論文&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+    &lt;div class=&quot;img-placeholder&quot;&gt;
+        [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction]
+        &lt;div class=&quot;caption&quot;&gt;圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024）&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;導言：為什麼我們需要敘事網絡？&lt;/h2&gt;
+    &lt;p&gt;
+        在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。
+    &lt;/p&gt;
+    &lt;p&gt;
+        傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。
+    &lt;/p&gt;
+    &lt;p&gt;
+        敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為&lt;strong&gt;事件序列&lt;/strong&gt;而非靜態詞集，強調行動者、行動和受事者之間的&lt;strong&gt;結構化互動&lt;/strong&gt;。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。
+    &lt;/p&gt;
+
+    &lt;p&gt;下表概括了傳統共詞分析與敘事網絡範式的區別：&lt;/p&gt;
+
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;分析維度&lt;/th&gt;
+                &lt;th&gt;共詞網絡 (Co-word Network)&lt;/th&gt;
+                &lt;th&gt;敘事網絡 (Narrative Network)&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;基本單元&lt;/td&gt;
+                &lt;td&gt;詞彙 A – 詞彙 B（共現關係）&lt;/td&gt;
+                &lt;td&gt;施事者 – 動作 – 受事者（事件三元組）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;連接依據&lt;/td&gt;
+                &lt;td&gt;統計關聯（詞頻/共現）&lt;/td&gt;
+                &lt;td&gt;語義互動（角色關係）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;網絡類型&lt;/td&gt;
+                &lt;td&gt;無向圖（Undirected）&lt;/td&gt;
+                &lt;td&gt;有向圖（Directed）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;可解釋性&lt;/td&gt;
+                &lt;td&gt;話題相關度（討論內容）&lt;/td&gt;
+                &lt;td&gt;行動邏輯（誰對誰做了什麼）&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;
+        敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第一部分：理論視角——從話題挖掘到敘事解析&lt;/h2&gt;
+    &lt;p&gt;
+        文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;人類是「講故事的動物」&lt;/strong&gt;：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;詞袋模型的局限&lt;/strong&gt;：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;解釋社會互動&lt;/strong&gt;：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;blockquote&gt;
+        Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。
+    &lt;/blockquote&gt;
+
+    &lt;h2&gt;第二部分：核心技術——語義角色標注 (SRL)&lt;/h2&gt;
+    &lt;p&gt;
+        語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;謂詞（Predicate）&lt;/strong&gt;：通常為句子的主要動詞，表示一個動作或事件。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;論元（Arguments）&lt;/strong&gt;：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;以 PropBank 標註體系為例，常見的語義角色包括：&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;ARG0&lt;/strong&gt;：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，&lt;strong&gt;政府&lt;/strong&gt;是 ARG0。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARG1&lt;/strong&gt;：受事者（Patient），動作的承受者或作用對象。上述例子中，&lt;strong&gt;新政策&lt;/strong&gt;是 ARG1。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARGM&lt;/strong&gt;：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 &lt;code&gt;&quot;The CDC confirms the first coronavirus case.&quot;&lt;/code&gt; 經過 SRL 解析後，可得到如下結構：&lt;br&gt;
+        &lt;code&gt;[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]&lt;/code&gt;&lt;br&gt;
+        清晰地表達了「誰做了什麼事」。
+    &lt;/p&gt;
+    
+    &lt;h3&gt;SRL 工具與模型&lt;/h3&gt;
+    &lt;p&gt;
+        早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;代碼示例：使用 AllenNLP 進行語義解析&lt;/strong&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;from allennlp.predictors import Predictor
+
+加載預訓練的 BERT-SRL 模型（本地路徑或 URL）
+predictor = Predictor.from_path(&ldquo;srl-bert.2020.12.15.tar.gz&rdquo;)">
+<meta name="author" content="">
+<link rel="canonical" href="https://llspublic.github.io/posts/example1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css" integrity="sha256-NDzEgLn/yPBMy&#43;XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://llspublic.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://llspublic.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://llspublic.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://llspublic.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://llspublic.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://llspublic.github.io/posts/example1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://llspublic.github.io/posts/example1/">
+  <meta property="og:site_name" content="Lyuxi Liu">
+  <meta property="og:title" content="Lyuxi Liu">
+  <meta property="og:description" content=" body { font-family: &#34;Courier New&#34;, Courier, &#34;Lucida Sans Typewriter&#34;, &#34;Lucida Typewriter&#34;, monospace; background-color: #ffffff; color: #000000; font-size: 15px; line-height: 1.7; padding: 60px 40px; max-width: 800px; margin: 0 auto; } a { color: #000; text-decoration: underline; cursor: pointer; } a:hover { background-color: #000; color: #fff; text-decoration: none; } /* --- 結構樣式 --- */ /* 頂部導航 */ .back-nav { margin-bottom: 50px; font-size: 13px; } /* 文章頭部 */ header { margin-bottom: 60px; border-bottom: 2px solid #000; padding-bottom: 20px; } h1 { font-size: 22px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; } .meta-info { font-size: 13px; color: #555; display: flex; flex-wrap: wrap; gap: 20px; } /* 正文排版 */ .content { margin-bottom: 80px; } h2 { font-size: 18px; font-weight: bold; margin-top: 60px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; display: inline-block; width: 100%; } h3 { font-size: 16px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; text-decoration: underline; } p { margin-bottom: 25px; text-align: justify; } /* 列表樣式 */ ul, ol { margin-bottom: 25px; padding-left: 25px; } li { margin-bottom: 10px; } /* 引用樣式 */ blockquote { border-left: 4px solid #000; padding-left: 20px; margin: 30px 0; font-style: italic; color: #444; background-color: #f9f9f9; padding: 15px; } /* 表格樣式 */ table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 13px; } th, td { border: 1px solid #000; padding: 12px; text-align: left; vertical-align: top; } th { background-color: #f0f0f0; font-weight: bold; } /* 代碼塊樣式 */ pre { background-color: #f4f4f4; border: 1px solid #000; padding: 20px; overflow-x: auto; margin: 30px 0; font-size: 13px; line-height: 1.5; } code { font-family: &#34;Courier New&#34;, Courier, monospace; } /* 圖片佔位符 */ .img-placeholder { width: 100%; border: 1px dashed #000; padding: 20px; margin: 35px 0; text-align: center; background-color: #fff; } .caption { margin-top: 10px; font-size: 12px; font-style: italic; color: #444; } /* 參考文獻區域 */ .references { margin-top: 80px; padding-top: 40px; border-top: 4px double #000; font-size: 12px; color: #333; } .ref-title { font-weight: bold; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; } .ref-item { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; /* 懸掛縮進 */ } /* 移動端適配 */ @media (max-width: 600px) { body { padding: 30px 20px; } h1 { font-size: 18px; } table { font-size: 11px; } th, td { padding: 8px; } } &lt;/style&gt; &lt;nav class=&#34;back-nav&#34;&gt; &lt;a href=&#34;index.html&#34;&gt;&amp;lt; back to index&lt;/a&gt; &lt;/nav&gt; &lt;header&gt; &lt;h1&gt;敘事網絡與 SRL 入門：&lt;br&gt;從「詞頻統計」到「結構化行動邏輯」的範式轉變&lt;/h1&gt; &lt;div class=&#34;meta-info&#34;&gt; &lt;span&gt;SOURCE: IC2S2 OSoMe Tutorial 2024&lt;/span&gt; &lt;span&gt;AUTHOR: @湯圓鍵盤壞了不能寫論文&lt;/span&gt; &lt;/div&gt; &lt;/header&gt; &lt;article class=&#34;content&#34;&gt; &lt;div class=&#34;img-placeholder&#34;&gt; [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction] &lt;div class=&#34;caption&#34;&gt;圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024）&lt;/div&gt; &lt;/div&gt; &lt;h2&gt;導言：為什麼我們需要敘事網絡？&lt;/h2&gt; &lt;p&gt; 在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。 &lt;/p&gt; &lt;p&gt; 傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。 &lt;/p&gt; &lt;p&gt; 敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為&lt;strong&gt;事件序列&lt;/strong&gt;而非靜態詞集，強調行動者、行動和受事者之間的&lt;strong&gt;結構化互動&lt;/strong&gt;。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。 &lt;/p&gt; &lt;p&gt;下表概括了傳統共詞分析與敘事網絡範式的區別：&lt;/p&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;分析維度&lt;/th&gt; &lt;th&gt;共詞網絡 (Co-word Network)&lt;/th&gt; &lt;th&gt;敘事網絡 (Narrative Network)&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;基本單元&lt;/td&gt; &lt;td&gt;詞彙 A – 詞彙 B（共現關係）&lt;/td&gt; &lt;td&gt;施事者 – 動作 – 受事者（事件三元組）&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;連接依據&lt;/td&gt; &lt;td&gt;統計關聯（詞頻/共現）&lt;/td&gt; &lt;td&gt;語義互動（角色關係）&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;網絡類型&lt;/td&gt; &lt;td&gt;無向圖（Undirected）&lt;/td&gt; &lt;td&gt;有向圖（Directed）&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;可解釋性&lt;/td&gt; &lt;td&gt;話題相關度（討論內容）&lt;/td&gt; &lt;td&gt;行動邏輯（誰對誰做了什麼）&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;p&gt; 敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。 &lt;/p&gt; &lt;h2&gt;第一部分：理論視角——從話題挖掘到敘事解析&lt;/h2&gt; &lt;p&gt; 文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因： &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;人類是「講故事的動物」&lt;/strong&gt;：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;詞袋模型的局限&lt;/strong&gt;：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;解釋社會互動&lt;/strong&gt;：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt; Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。 &lt;/blockquote&gt; &lt;h2&gt;第二部分：核心技術——語義角色標注 (SRL)&lt;/h2&gt; &lt;p&gt; 語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。 &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;謂詞（Predicate）&lt;/strong&gt;：通常為句子的主要動詞，表示一個動作或事件。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;論元（Arguments）&lt;/strong&gt;：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;以 PropBank 標註體系為例，常見的語義角色包括：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;ARG0&lt;/strong&gt;：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，&lt;strong&gt;政府&lt;/strong&gt;是 ARG0。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;ARG1&lt;/strong&gt;：受事者（Patient），動作的承受者或作用對象。上述例子中，&lt;strong&gt;新政策&lt;/strong&gt;是 ARG1。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;ARGM&lt;/strong&gt;：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt; 透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 &lt;code&gt;&#34;The CDC confirms the first coronavirus case.&#34;&lt;/code&gt; 經過 SRL 解析後，可得到如下結構：&lt;br&gt; &lt;code&gt;[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]&lt;/code&gt;&lt;br&gt; 清晰地表達了「誰做了什麼事」。 &lt;/p&gt; &lt;h3&gt;SRL 工具與模型&lt;/h3&gt; &lt;p&gt; 早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。 &lt;/p&gt; &lt;p&gt;&lt;strong&gt;代碼示例：使用 AllenNLP 進行語義解析&lt;/strong&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;from allennlp.predictors import Predictor 加載預訓練的 BERT-SRL 模型（本地路徑或 URL） predictor = Predictor.from_path(“srl-bert.2020.12.15.tar.gz”)">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="
+
+    body {
+        font-family: &quot;Courier New&quot;, Courier, &quot;Lucida Sans Typewriter&quot;, &quot;Lucida Typewriter&quot;, monospace;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 60px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* --- 結構樣式 --- */
+    
+    /* 頂部導航 */
+    .back-nav {
+        margin-bottom: 50px;
+        font-size: 13px;
+    }
+
+    /* 文章頭部 */
+    header {
+        margin-bottom: 60px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .meta-info {
+        font-size: 13px;
+        color: #555;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* 正文排版 */
+    .content {
+        margin-bottom: 80px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 60px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    /* 列表樣式 */
+    ul, ol {
+        margin-bottom: 25px;
+        padding-left: 25px;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+
+    /* 引用樣式 */
+    blockquote {
+        border-left: 4px solid #000;
+        padding-left: 20px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #444;
+        background-color: #f9f9f9;
+        padding: 15px;
+    }
+
+    /* 表格樣式 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        font-size: 13px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    /* 代碼塊樣式 */
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #000;
+        padding: 20px;
+        overflow-x: auto;
+        margin: 30px 0;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    code {
+        font-family: &quot;Courier New&quot;, Courier, monospace;
+    }
+
+    /* 圖片佔位符 */
+    .img-placeholder {
+        width: 100%;
+        border: 1px dashed #000;
+        padding: 20px;
+        margin: 35px 0;
+        text-align: center;
+        background-color: #fff;
+    }
+    
+    .caption {
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+        color: #444;
+    }
+
+    /* 參考文獻區域 */
+    .references {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 4px double #000;
+        font-size: 12px;
+        color: #333;
+    }
+    
+    .ref-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .ref-item {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        text-indent: -20px; /* 懸掛縮進 */
+    }
+
+    /* 移動端適配 */
+    @media (max-width: 600px) {
+        body { padding: 30px 20px; }
+        h1 { font-size: 18px; }
+        table { font-size: 11px; }
+        th, td { padding: 8px; }
+    }
+&lt;/style&gt;
+
+
+&lt;nav class=&quot;back-nav&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;&amp;lt; back to index&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;header&gt;
+    &lt;h1&gt;敘事網絡與 SRL 入門：&lt;br&gt;從「詞頻統計」到「結構化行動邏輯」的範式轉變&lt;/h1&gt;
+    &lt;div class=&quot;meta-info&quot;&gt;
+        &lt;span&gt;SOURCE: IC2S2 OSoMe Tutorial 2024&lt;/span&gt;
+        &lt;span&gt;AUTHOR: @湯圓鍵盤壞了不能寫論文&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+    &lt;div class=&quot;img-placeholder&quot;&gt;
+        [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction]
+        &lt;div class=&quot;caption&quot;&gt;圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024）&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;導言：為什麼我們需要敘事網絡？&lt;/h2&gt;
+    &lt;p&gt;
+        在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。
+    &lt;/p&gt;
+    &lt;p&gt;
+        傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。
+    &lt;/p&gt;
+    &lt;p&gt;
+        敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為&lt;strong&gt;事件序列&lt;/strong&gt;而非靜態詞集，強調行動者、行動和受事者之間的&lt;strong&gt;結構化互動&lt;/strong&gt;。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。
+    &lt;/p&gt;
+
+    &lt;p&gt;下表概括了傳統共詞分析與敘事網絡範式的區別：&lt;/p&gt;
+
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;分析維度&lt;/th&gt;
+                &lt;th&gt;共詞網絡 (Co-word Network)&lt;/th&gt;
+                &lt;th&gt;敘事網絡 (Narrative Network)&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;基本單元&lt;/td&gt;
+                &lt;td&gt;詞彙 A – 詞彙 B（共現關係）&lt;/td&gt;
+                &lt;td&gt;施事者 – 動作 – 受事者（事件三元組）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;連接依據&lt;/td&gt;
+                &lt;td&gt;統計關聯（詞頻/共現）&lt;/td&gt;
+                &lt;td&gt;語義互動（角色關係）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;網絡類型&lt;/td&gt;
+                &lt;td&gt;無向圖（Undirected）&lt;/td&gt;
+                &lt;td&gt;有向圖（Directed）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;可解釋性&lt;/td&gt;
+                &lt;td&gt;話題相關度（討論內容）&lt;/td&gt;
+                &lt;td&gt;行動邏輯（誰對誰做了什麼）&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;
+        敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第一部分：理論視角——從話題挖掘到敘事解析&lt;/h2&gt;
+    &lt;p&gt;
+        文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;人類是「講故事的動物」&lt;/strong&gt;：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;詞袋模型的局限&lt;/strong&gt;：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;解釋社會互動&lt;/strong&gt;：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;blockquote&gt;
+        Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。
+    &lt;/blockquote&gt;
+
+    &lt;h2&gt;第二部分：核心技術——語義角色標注 (SRL)&lt;/h2&gt;
+    &lt;p&gt;
+        語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;謂詞（Predicate）&lt;/strong&gt;：通常為句子的主要動詞，表示一個動作或事件。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;論元（Arguments）&lt;/strong&gt;：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;以 PropBank 標註體系為例，常見的語義角色包括：&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;ARG0&lt;/strong&gt;：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，&lt;strong&gt;政府&lt;/strong&gt;是 ARG0。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARG1&lt;/strong&gt;：受事者（Patient），動作的承受者或作用對象。上述例子中，&lt;strong&gt;新政策&lt;/strong&gt;是 ARG1。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARGM&lt;/strong&gt;：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 &lt;code&gt;&quot;The CDC confirms the first coronavirus case.&quot;&lt;/code&gt; 經過 SRL 解析後，可得到如下結構：&lt;br&gt;
+        &lt;code&gt;[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]&lt;/code&gt;&lt;br&gt;
+        清晰地表達了「誰做了什麼事」。
+    &lt;/p&gt;
+    
+    &lt;h3&gt;SRL 工具與模型&lt;/h3&gt;
+    &lt;p&gt;
+        早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;代碼示例：使用 AllenNLP 進行語義解析&lt;/strong&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;from allennlp.predictors import Predictor
+
+加載預訓練的 BERT-SRL 模型（本地路徑或 URL）
+predictor = Predictor.from_path(&ldquo;srl-bert.2020.12.15.tar.gz&rdquo;)">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://llspublic.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "https://llspublic.github.io/posts/example1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": " body { font-family: \u0026quot;Courier New\u0026quot;, Courier, \u0026quot;Lucida Sans Typewriter\u0026quot;, \u0026quot;Lucida Typewriter\u0026quot;, monospace; background-color: #ffffff; color: #000000; font-size: 15px; line-height: 1.7; padding: 60px 40px; max-width: 800px; margin: 0 auto; } a { color: #000; text-decoration: underline; cursor: pointer; } a:hover { background-color: #000; color: #fff; text-decoration: none; } /* --- 結構樣式 --- */ /* 頂部導航 */ .back-nav { margin-bottom: 50px; font-size: 13px; } /* 文章頭部 */ header { margin-bottom: 60px; border-bottom: 2px solid #000; padding-bottom: 20px; } h1 { font-size: 22px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; } .meta-info { font-size: 13px; color: #555; display: flex; flex-wrap: wrap; gap: 20px; } /* 正文排版 */ .content { margin-bottom: 80px; } h2 { font-size: 18px; font-weight: bold; margin-top: 60px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; display: inline-block; width: 100%; } h3 { font-size: 16px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; text-decoration: underline; } p { margin-bottom: 25px; text-align: justify; } /* 列表樣式 */ ul, ol { margin-bottom: 25px; padding-left: 25px; } li { margin-bottom: 10px; } /* 引用樣式 */ blockquote { border-left: 4px solid #000; padding-left: 20px; margin: 30px 0; font-style: italic; color: #444; background-color: #f9f9f9; padding: 15px; } /* 表格樣式 */ table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 13px; } th, td { border: 1px solid #000; padding: 12px; text-align: left; vertical-align: top; } th { background-color: #f0f0f0; font-weight: bold; } /* 代碼塊樣式 */ pre { background-color: #f4f4f4; border: 1px solid #000; padding: 20px; overflow-x: auto; margin: 30px 0; font-size: 13px; line-height: 1.5; } code { font-family: \u0026quot;Courier New\u0026quot;, Courier, monospace; } /* 圖片佔位符 */ .img-placeholder { width: 100%; border: 1px dashed #000; padding: 20px; margin: 35px 0; text-align: center; background-color: #fff; } .caption { margin-top: 10px; font-size: 12px; font-style: italic; color: #444; } /* 參考文獻區域 */ .references { margin-top: 80px; padding-top: 40px; border-top: 4px double #000; font-size: 12px; color: #333; } .ref-title { font-weight: bold; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; } .ref-item { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; /* 懸掛縮進 */ } /* 移動端適配 */ @media (max-width: 600px) { body { padding: 30px 20px; } h1 { font-size: 18px; } table { font-size: 11px; } th, td { padding: 8px; } } \u0026lt;/style\u0026gt; \u0026lt;nav class=\u0026quot;back-nav\u0026quot;\u0026gt; \u0026lt;a href=\u0026quot;index.html\u0026quot;\u0026gt;\u0026amp;lt; back to index\u0026lt;/a\u0026gt; \u0026lt;/nav\u0026gt; \u0026lt;header\u0026gt; \u0026lt;h1\u0026gt;敘事網絡與 SRL 入門：\u0026lt;br\u0026gt;從「詞頻統計」到「結構化行動邏輯」的範式轉變\u0026lt;/h1\u0026gt; \u0026lt;div class=\u0026quot;meta-info\u0026quot;\u0026gt; \u0026lt;span\u0026gt;SOURCE: IC2S2 OSoMe Tutorial 2024\u0026lt;/span\u0026gt; \u0026lt;span\u0026gt;AUTHOR: @湯圓鍵盤壞了不能寫論文\u0026lt;/span\u0026gt; \u0026lt;/div\u0026gt; \u0026lt;/header\u0026gt; \u0026lt;article class=\u0026quot;content\u0026quot;\u0026gt; \u0026lt;div class=\u0026quot;img-placeholder\u0026quot;\u0026gt; [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction] \u0026lt;div class=\u0026quot;caption\u0026quot;\u0026gt;圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024）\u0026lt;/div\u0026gt; \u0026lt;/div\u0026gt; \u0026lt;h2\u0026gt;導言：為什麼我們需要敘事網絡？\u0026lt;/h2\u0026gt; \u0026lt;p\u0026gt; 在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。 \u0026lt;/p\u0026gt; \u0026lt;p\u0026gt; 傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。 \u0026lt;/p\u0026gt; \u0026lt;p\u0026gt; 敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為\u0026lt;strong\u0026gt;事件序列\u0026lt;/strong\u0026gt;而非靜態詞集，強調行動者、行動和受事者之間的\u0026lt;strong\u0026gt;結構化互動\u0026lt;/strong\u0026gt;。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。 \u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;下表概括了傳統共詞分析與敘事網絡範式的區別：\u0026lt;/p\u0026gt; \u0026lt;table\u0026gt; \u0026lt;thead\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;th\u0026gt;分析維度\u0026lt;/th\u0026gt; \u0026lt;th\u0026gt;共詞網絡 (Co-word Network)\u0026lt;/th\u0026gt; \u0026lt;th\u0026gt;敘事網絡 (Narrative Network)\u0026lt;/th\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;/thead\u0026gt; \u0026lt;tbody\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;基本單元\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;詞彙 A – 詞彙 B（共現關係）\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;施事者 – 動作 – 受事者（事件三元組）\u0026lt;/td\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;連接依據\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;統計關聯（詞頻/共現）\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;語義互動（角色關係）\u0026lt;/td\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;網絡類型\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;無向圖（Undirected）\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;有向圖（Directed）\u0026lt;/td\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;可解釋性\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;話題相關度（討論內容）\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;行動邏輯（誰對誰做了什麼）\u0026lt;/td\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;/tbody\u0026gt; \u0026lt;/table\u0026gt; \u0026lt;p\u0026gt; 敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。 \u0026lt;/p\u0026gt; \u0026lt;h2\u0026gt;第一部分：理論視角——從話題挖掘到敘事解析\u0026lt;/h2\u0026gt; \u0026lt;p\u0026gt; 文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因： \u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;人類是「講故事的動物」\u0026lt;/strong\u0026gt;：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;詞袋模型的局限\u0026lt;/strong\u0026gt;：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;解釋社會互動\u0026lt;/strong\u0026gt;：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;blockquote\u0026gt; Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。 \u0026lt;/blockquote\u0026gt; \u0026lt;h2\u0026gt;第二部分：核心技術——語義角色標注 (SRL)\u0026lt;/h2\u0026gt; \u0026lt;p\u0026gt; 語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。 \u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;謂詞（Predicate）\u0026lt;/strong\u0026gt;：通常為句子的主要動詞，表示一個動作或事件。\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;論元（Arguments）\u0026lt;/strong\u0026gt;：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt;以 PropBank 標註體系為例，常見的語義角色包括：\u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;ARG0\u0026lt;/strong\u0026gt;：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，\u0026lt;strong\u0026gt;政府\u0026lt;/strong\u0026gt;是 ARG0。\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;ARG1\u0026lt;/strong\u0026gt;：受事者（Patient），動作的承受者或作用對象。上述例子中，\u0026lt;strong\u0026gt;新政策\u0026lt;/strong\u0026gt;是 ARG1。\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;\u0026lt;strong\u0026gt;ARGM\u0026lt;/strong\u0026gt;：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt; 透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 \u0026lt;code\u0026gt;\u0026quot;The CDC confirms the first coronavirus case.\u0026quot;\u0026lt;/code\u0026gt; 經過 SRL 解析後，可得到如下結構：\u0026lt;br\u0026gt; \u0026lt;code\u0026gt;[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]\u0026lt;/code\u0026gt;\u0026lt;br\u0026gt; 清晰地表達了「誰做了什麼事」。 \u0026lt;/p\u0026gt; \u0026lt;h3\u0026gt;SRL 工具與模型\u0026lt;/h3\u0026gt; \u0026lt;p\u0026gt; 早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。 \u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;代碼示例：使用 AllenNLP 進行語義解析\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;pre\u0026gt;\u0026lt;code\u0026gt;from allennlp.predictors import Predictor 加載預訓練的 BERT-SRL 模型（本地路徑或 URL） predictor = Predictor.from_path(\u0026ldquo;srl-bert.2020.12.15.tar.gz\u0026rdquo;)\n",
+  "keywords": [
+    
+  ],
+  "articleBody": " body { font-family: \"Courier New\", Courier, \"Lucida Sans Typewriter\", \"Lucida Typewriter\", monospace; background-color: #ffffff; color: #000000; font-size: 15px; line-height: 1.7; padding: 60px 40px; max-width: 800px; margin: 0 auto; } a { color: #000; text-decoration: underline; cursor: pointer; } a:hover { background-color: #000; color: #fff; text-decoration: none; } /* --- 結構樣式 --- */ /* 頂部導航 */ .back-nav { margin-bottom: 50px; font-size: 13px; } /* 文章頭部 */ header { margin-bottom: 60px; border-bottom: 2px solid #000; padding-bottom: 20px; } h1 { font-size: 22px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; } .meta-info { font-size: 13px; color: #555; display: flex; flex-wrap: wrap; gap: 20px; } /* 正文排版 */ .content { margin-bottom: 80px; } h2 { font-size: 18px; font-weight: bold; margin-top: 60px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; padding-bottom: 5px; display: inline-block; width: 100%; } h3 { font-size: 16px; font-weight: bold; margin-top: 30px; margin-bottom: 15px; text-decoration: underline; } p { margin-bottom: 25px; text-align: justify; } /* 列表樣式 */ ul, ol { margin-bottom: 25px; padding-left: 25px; } li { margin-bottom: 10px; } /* 引用樣式 */ blockquote { border-left: 4px solid #000; padding-left: 20px; margin: 30px 0; font-style: italic; color: #444; background-color: #f9f9f9; padding: 15px; } /* 表格樣式 */ table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 13px; } th, td { border: 1px solid #000; padding: 12px; text-align: left; vertical-align: top; } th { background-color: #f0f0f0; font-weight: bold; } /* 代碼塊樣式 */ pre { background-color: #f4f4f4; border: 1px solid #000; padding: 20px; overflow-x: auto; margin: 30px 0; font-size: 13px; line-height: 1.5; } code { font-family: \"Courier New\", Courier, monospace; } /* 圖片佔位符 */ .img-placeholder { width: 100%; border: 1px dashed #000; padding: 20px; margin: 35px 0; text-align: center; background-color: #fff; } .caption { margin-top: 10px; font-size: 12px; font-style: italic; color: #444; } /* 參考文獻區域 */ .references { margin-top: 80px; padding-top: 40px; border-top: 4px double #000; font-size: 12px; color: #333; } .ref-title { font-weight: bold; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; } .ref-item { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; /* 懸掛縮進 */ } /* 移動端適配 */ @media (max-width: 600px) { body { padding: 30px 20px; } h1 { font-size: 18px; } table { font-size: 11px; } th, td { padding: 8px; } } \u0026lt; back to index 敘事網絡與 SRL 入門：\n從「詞頻統計」到「結構化行動邏輯」的範式轉變 SOURCE: IC2S2 OSoMe Tutorial 2024 AUTHOR: @湯圓鍵盤壞了不能寫論文 [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction] 圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024） 導言：為什麼我們需要敘事網絡？ 在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。 傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。 敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為事件序列而非靜態詞集，強調行動者、行動和受事者之間的結構化互動。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。 下表概括了傳統共詞分析與敘事網絡範式的區別：\n分析維度 共詞網絡 (Co-word Network) 敘事網絡 (Narrative Network) 基本單元 詞彙 A – 詞彙 B（共現關係） 施事者 – 動作 – 受事者（事件三元組） 連接依據 統計關聯（詞頻/共現） 語義互動（角色關係） 網絡類型 無向圖（Undirected） 有向圖（Directed） 可解釋性 話題相關度（討論內容） 行動邏輯（誰對誰做了什麼） 敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。 第一部分：理論視角——從話題挖掘到敘事解析 文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因： 人類是「講故事的動物」：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。 詞袋模型的局限：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。 解釋社會互動：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。 Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。 第二部分：核心技術——語義角色標注 (SRL) 語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。 謂詞（Predicate）：通常為句子的主要動詞，表示一個動作或事件。 論元（Arguments）：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。 以 PropBank 標註體系為例，常見的語義角色包括：\nARG0：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，政府是 ARG0。 ARG1：受事者（Patient），動作的承受者或作用對象。上述例子中，新政策是 ARG1。 ARGM：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。 透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 \"The CDC confirms the first coronavirus case.\" 經過 SRL 解析後，可得到如下結構：\n[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]\n清晰地表達了「誰做了什麼事」。 SRL 工具與模型 早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。 代碼示例：使用 AllenNLP 進行語義解析\nfrom allennlp.predictors import Predictor 加載預訓練的 BERT-SRL 模型（本地路徑或 URL） predictor = Predictor.from_path(“srl-bert.2020.12.15.tar.gz”)\n輸入待解析句子 sentence = “The CDC confirms the first coronavirus case.” result = predictor.predict(sentence=sentence)\n輸出語義角色標注結果 for verb in result[‘verbs’]: print(verb[‘description’])\n預期輸出： [ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case] . 技術要點：為了提高 SRL 的效果，研究者們引入了多種語義資源和技巧。例如，使用更豐富的語料（如 PropBank 或 FrameNet）進行模型訓練，以捕捉動詞的多義性；結合詞嵌入與語法特徵以增強模型對長句的解析能力。總之，現代 SRL 技術已相當成熟，為後續的敘事網絡構建打下堅實基礎。 第三部分：敘事聚合——從微觀事件到宏觀網絡 經 SRL 解析後，我們將獲得海量微觀的敘事碎片（事件三元組）。但這些原始三元組往往非常稀疏且充斥噪音。為了從中抽取穩健的集體敘事，需要對碎片進行聚合和歸一化處理，使相似的角色和同義的動作歸併為統一的節點或關係。 聚合的核心步驟包括：\n動詞標準化（Verb Normalization）：將語料中意義相近但表達不同的動詞歸並到統一的語義框架下。例如將 “支持”（support）、 “背書”（endorse）、 “力挺”（back）等動詞都映射為「支持類」的通用動作。為實現這一點，可以利用 VerbAtlas 等大型詞彙資源。VerbAtlas 手工構建了動詞同義詞與框架的對應關係，將 5,649 個具體動詞歸納為 466 個通用謂詞框架。通過這種標準化，我們可以將語料中的大量原始三元組進行壓縮。 論元聚類（Argument Clustering）：解決不同表述指代同一實體的問題。比如語料中出現的 “美利堅合眾國”、“美國”、“USA” 顯然是同一實體。我們可以利用 語義嵌入+聚類 的方法來自動合併這些別名實體。實踐中，常使用 Sentence-BERT 將每個論元短語向量化，然後採用凝聚層次聚類（Hierarchical Clustering）或密度聚類方法，根據語義距離將相似實體歸為一類。 上述兩步驟將大量冗餘的事件碎片進行了語義壓縮。動詞的多樣表達被壓縮到有限的框架，實體的別名被合併為單一節點。如此處理後，我們得到了較為精簡且規範化的敘事事件集。 代碼示例：敘事聚合（動詞標準化 + 論元向量聚類）\nfrom sentence_transformers import SentenceTransformer from sklearn.cluster import AgglomerativeClustering\n範例實體列表（待聚類的 ARG 論元短語） entities = [“United States”, “USA”, “U.S.”, “every Asian person”, “Asian people”]\n1. 實體語義向量化 embedder = SentenceTransformer(‘all-MiniLM-L6-v2’) embeddings = embedder.encode(entities)\n2. 語義聚類（凝聚層次聚類） clustering = AgglomerativeClustering( n_clusters=None, distance_threshold=0.4, affinity=‘cosine’, linkage=‘average’ ) labels = clustering.fit_predict(embeddings)\n輸出每個實體的所屬聚類標籤 for entity, label in zip(entities, labels): print(entity, \" -\u003e Cluster\", label)\n輸出示例： United States -\u003e Cluster 0 USA -\u003e Cluster 0 U.S. -\u003e Cluster 0 every Asian person -\u003e Cluster 5 Asian people -\u003e Cluster 5 第四部分：網絡構建與可視分析 經過動詞和實體的聚合標準化後，我們得到了較為「乾淨」的事件列表。接下來需要將這些事件組織為敘事網絡結構，以便進一步的定量分析與視覺化。 1. 敘事網絡的定義 敘事網絡本質上是一個有向帶權圖（directed weighted graph）。在我們的框架中：\n節點（Nodes）：網絡中的節點代表敘事中的行動者（Actor）或受事者（Actant）。通常來說，就是論元聚合後得到的實體類別。 邊（Edges）：節點之間的有向連線表示一種敘事關係，通常對應一個謂詞框架。邊從 ARG0 指向 ARG1，並帶有動詞標籤，表示「主體對客體施加了某種行為」。 權重（Weights）：每條邊可賦予一個權重，表示該關係的重要性或強度。最簡單的權重是邊對應事件在語料中的出現頻次。更嚴謹的方法則可採用對數機率比（Log-Odds Ratio）等統計度量，以衡量某事件相對於基線的顯著性。 上述結構定義使敘事網絡具備了豐富的分析空間：我們可以研究入度最高的節點（最常被施加行動者），或探查出現頻率最高的動作（可能代表該語境下的核心敘事）。此外，透過網絡子群偵測，我們還能發現敘事上的陣營分化（例如支持 vs 反對的兩群角色）。 2. 骨幹提取與降噪 現實語料庫所構建的初始網絡通常非常龐大且複雜，其中充斥大量僅出現過幾次的邊。為了突出主要的敘事脈絡，我們需要對網絡進行降噪處理。一種有效的方法是提取網絡的多尺度骨幹（Multiscale Backbone）。 多尺度骨幹提取（Serrano 等, 2009）：該算法基於統計顯著性，從加權網絡中篩選出具有顯著連接強度的邊。具體而言，對於每個節點，假設其連接邊的權重分佈服從一定隨機過程，計算每條邊權重成為「超出隨機預期」的概率，並以顯著性水平 α 作為閾值保留邊。透過調整 α，研究者可以在保留網絡主要結構的同時，大幅削減弱聯繫邊數量，使網絡結構更清晰。 代碼示例：簡化的網絡構建與骨幹過濾流程\nimport networkx as nx 構建有向加權圖 G = nx.DiGraph() for (subj, verb, obj) in aggregated_triplets: # 三元組列表 G.add_edge(subj, obj, label=verb, weight=G[subj][obj][‘weight’]+1 if G.has_edge(subj, obj) else 1)\n骨幹提取：僅保留權重超過平均值的邊（簡單示例） avg_weight = sum([d[‘weight’] for ,,d in G.edges(data=True)]) / G.number_of_edges() backbone_edges = [(u,v,d) for u,v,d in G.edges(data=True) if d[‘weight’] \u003e= avg_weight]\nG_core = nx.DiGraph() G_core.add_edges_from(backbone_edges)\n過濾後網絡統計 print(“骨幹節點數：”, G_core.number_of_nodes()) print(“骨幹邊數：”, G_core.number_of_edges())\n3. 網絡視覺化與交互分析 構建好的敘事網絡可以透過可視化來直觀展示其結構特徵。傳統的節點-鏈接圖適合描繪敘事網絡。為了增強分析效果，我們可以引入以下策略： 交互式圖譜：使用如 PyVis、D3.js 等庫生成可交互的網絡圖。 物理引擎佈局：將節點視為帶電粒子，引入引力和斥力進行佈局，使得連接緊密的節點自動聚攏，往往能突出網絡中的社群結構（clusters）。 樣式編碼：利用節點大小、顏色編碼節點的度中心性或類別；使用邊的顏色、粗細表示不同類型的動詞或關聯強度。例如將敘事網絡中的邊分為支持（藍）和衝突（紅）兩類。 通過以上手段，我們最終可以獲得一幅清晰、易讀的敘事網絡圖譜。研究者可以在圖譜中直觀識別出敘事核心（高度連結的中心節點）以及敘事子情節（邊緣的小型集群）。 第五部分：實證應用與發現 基於上述方法構建的敘事網絡，已在多項研究中展示出強大的分析能力。Zhao 等人將這一框架應用於 2017 年法國大選和 COVID-19 推特語料，驗證了其有效性。以下是幾項關鍵發現： 角色形象與敘事分化：在法國大選推文網絡中，兩位主要候選人（馬克宏和勒龐）所處的敘事位置明顯不同。勒龐節點周圍聚集了大量帶有負面意涵的動作（如「攻擊」「指責」等），反映其在輿論敘事中飽受爭議；相對而言，馬克宏節點主要連接著中性或與競選活動相關的動作（如「舉行造勢」「拜訪選民」等）。兩者對比凸顯出輿論如何透過不同的動詞框架來塑造候選人形象。 事件驅動的敘事變遷：透過對不同比時間窗的敘事網絡進行觀察，研究者發現敘事轉折點往往與現實中的重大事件高度吻合。Zhao 等人利用變化點檢測算法捕捉到了這些敘事轉變時刻，例如在法國大選推文中偵測到的敘事轉折點恰好對應了 #MacronLeaks 醜聞爆發和正式就職日等關鍵節點。 網絡結構特徵：敘事網絡的拓撲結構揭示了輿論場的核心-邊緣分佈。一小部分高中心性節點（通常是核心行動者）構成了網絡的「核心」，它們之間通過多條有向邊緊密相連，形成輿論敘事的主幹。相反，其他次要角色或具體事件則處於「邊緣」。這種中心-邊陲的圖譜形態，揭示了輿論如何圍繞少數關鍵角色展開，同時涵蓋多維度議題。 綜上，實證應用表明敘事網絡方法能同時提供微觀的語義解讀（單個事件的角色關係）和宏觀的結構洞察（整體敘事格局）。這使其成為理解線上輿情與社會敘事動態的有力工具。 第六部分：前沿方向與挑戰展望 敘事網絡分析作為一種新興範式，仍有廣闊的拓展空間和挑戰有待解決。\n1. 跨模態敘事解析 人類的敘事不僅存在於文字中，也透過圖像、視頻等多媒體形式傳播。全新的多模態敘事提取技術正在興起： 視覺語義角色標注（Visual SRL）：目標是讓模型從圖像中產生一個簡潔的事件描述。例如給定一張剪羊毛的照片，模型應識別出「男人在剪羊毛」，並標出角色：「男人（理髮者）」「羊（被剪對象）」「剪刀（工具）」等。 視頻事件敘事（Video SRL）：視頻中包含完整的事件發生過程。模型需要依序識別「人物1 開門」「人物1 呼喚寵物」「寵物 跑向 人物1」這樣的事件序列，並推斷角色間的連續關係。隨著視頻理解技術的發展，未來有望將這些從多媒體中提取的事件融入整體敘事網絡，形成跨模態的敘事圖譜。 2. 技術局限與研發挑戰 隱喻與反諷理解：網絡輿論中充斥著隱喻、反諷、梗文化（memes）。目前的 SRL 模型主要針對顯性語義，對於「話裡有話」的隱含意義往往束手無策。這可能在敘事網絡中引入偏差。 跨句敘事鏈抽取：現有方法多在單句範圍內抽取事件，然而很多敘事脈絡跨越多個句子。如何讓模型將這些分散在多句中的線索串聯起來，構建更加完整的跨句敘事鏈，是下一步需要解決的問題。 指代消解與角色連貫：敘事網絡構建非常依賴實體識別的準確性。如果文本中出現大量代詞，模型需要正確解析其指代的具體對象。指代錯誤可能導致敘事網絡中節點分裂或錯連。 大模型與生成式方法：大型預訓練語言模型（LLM）的崛起為敘事解析提供了新路徑。與其逐句抽取再聚合，不如讓模型直接閱讀完整文檔後生成一個結構化的敘事圖譜。然而，目前這仍處於探索階段，需要解決生成結果的可控性和一致性問題。 結語 敘事網絡分析作為文本挖掘領域的新興方法，正引領我們從關注詞彙頻率轉向關注行動邏輯。借助 SRL 等技術，我們得以自動擷取大規模文本中的「誰-做了什麼-給了誰」，進而構建出可量化、可視化的敘事全貌。儘管面臨諸多挑戰，隨著多模態融合和更強AI模型的加入，敘事網絡方法的前景十分廣闊。我們有理由相信，在不久的將來，跨文本、圖像、視頻的敘事圖譜將成為社會科學家理解輿論與文化敘事的強大工具，助力揭示隱藏在海量資訊背後的故事脈絡與人類行為邏輯。 Reference List (Selected): [1] Zhao, W. et al. (2024). Discovering Collective Narratives Shifts in Online Discussions. ICWSM 2024. [2] Serrano, M. Á. et al. (2009). Extracting the multiscale backbone of complex weighted networks. PNAS, 106(16): 6483–6488. [3] Yatskar, M. et al. (2016). Situation Recognition: Visual Semantic Role Labeling for Image Understanding. CVPR 2016. [4] Sadhu, A. et al. (2021). Visual Semantic Role Labeling for Video Understanding. CVPR 2021. [5] Reimers, N., Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019. [6] Palmer, M. et al. (2005). The Proposition Bank: An Annotated Corpus of Semantic Roles. Computational Linguistics. [7] Willaert, T. et al. (2023). Extracting narrative signals from public discourse: a network-based approach. Humanit. Soc. Sci. Commun. [8] Collobert, R. et al. (2011). Natural Language Processing (almost) from Scratch. J. Mach. Learn. Res. [Github: collective_narrative_shift] ",
+  "wordCount" : "1055",
+  "inLanguage": "zh",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://llspublic.github.io/posts/example1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyuxi Liu",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://llspublic.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://llspublic.github.io/" accesskey="h" title="Lyuxi Liu (Alt + H)">Lyuxi Liu</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://llspublic.github.io/en/" title="English"
+                                aria-label="English">En</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://llspublic.github.io/about/" title="關於">
+                    <span>關於</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://llspublic.github.io/archive/" title="歸檔">
+                    <span>歸檔</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+  <div class="post-content"><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>    body {
+        font-family: &quot;Courier New&quot;, Courier, &quot;Lucida Sans Typewriter&quot;, &quot;Lucida Typewriter&quot;, monospace;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 60px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* --- 結構樣式 --- */
+    
+    /* 頂部導航 */
+    .back-nav {
+        margin-bottom: 50px;
+        font-size: 13px;
+    }
+
+    /* 文章頭部 */
+    header {
+        margin-bottom: 60px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .meta-info {
+        font-size: 13px;
+        color: #555;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* 正文排版 */
+    .content {
+        margin-bottom: 80px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 60px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    /* 列表樣式 */
+    ul, ol {
+        margin-bottom: 25px;
+        padding-left: 25px;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+
+    /* 引用樣式 */
+    blockquote {
+        border-left: 4px solid #000;
+        padding-left: 20px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #444;
+        background-color: #f9f9f9;
+        padding: 15px;
+    }
+
+    /* 表格樣式 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        font-size: 13px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    /* 代碼塊樣式 */
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #000;
+        padding: 20px;
+        overflow-x: auto;
+        margin: 30px 0;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    code {
+        font-family: &quot;Courier New&quot;, Courier, monospace;
+    }
+
+    /* 圖片佔位符 */
+    .img-placeholder {
+        width: 100%;
+        border: 1px dashed #000;
+        padding: 20px;
+        margin: 35px 0;
+        text-align: center;
+        background-color: #fff;
+    }
+    
+    .caption {
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+        color: #444;
+    }
+
+    /* 參考文獻區域 */
+    .references {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 4px double #000;
+        font-size: 12px;
+        color: #333;
+    }
+    
+    .ref-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .ref-item {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        text-indent: -20px; /* 懸掛縮進 */
+    }
+
+    /* 移動端適配 */
+    @media (max-width: 600px) {
+        body { padding: 30px 20px; }
+        h1 { font-size: 18px; }
+        table { font-size: 11px; }
+        th, td { padding: 8px; }
+    }
+&lt;/style&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<pre><code>&lt;nav class=&quot;back-nav&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;&amp;lt; back to index&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;header&gt;
+    &lt;h1&gt;敘事網絡與 SRL 入門：&lt;br&gt;從「詞頻統計」到「結構化行動邏輯」的範式轉變&lt;/h1&gt;
+    &lt;div class=&quot;meta-info&quot;&gt;
+        &lt;span&gt;SOURCE: IC2S2 OSoMe Tutorial 2024&lt;/span&gt;
+        &lt;span&gt;AUTHOR: @湯圓鍵盤壞了不能寫論文&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+    &lt;div class=&quot;img-placeholder&quot;&gt;
+        [IMAGE PLACEHOLDER: Flowchart of Narrative Network Construction]
+        &lt;div class=&quot;caption&quot;&gt;圖示：透過語義角色標注和事件聚合構建敘事網絡的流程（來源：OSoMe Tutorial 2024）&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;導言：為什麼我們需要敘事網絡？&lt;/h2&gt;
+    &lt;p&gt;
+        在社會科學研究中，面對海量文本數據，我們常使用詞雲（Word Cloud）或主題模型（LDA）來提取熱點話題。然而，這些方法僅告訴我們人們在「討論什麼」（What），卻難以揭示「誰對誰做了什麼」（Who did what to whom）這一社會互動的核心邏輯。敘事不僅僅是高頻詞的線性排列，更是通過事件將行動者與受體連接起來、建構社會現實的過程。
+    &lt;/p&gt;
+    &lt;p&gt;
+        傳統的詞袋模型將文本表示為無序詞彙的集合，使我們無法重構句子中角色與行動間的確切關係。詞頻或主題分佈固然能提供語料概覽，但「關鍵詞/主題 ≠ 完整敘事」。例如，LDA 主題模型會將文本歸納為若干主題，但這些主題僅僅是詞的概率分佈，缺乏對敘事結構（如因果、角色互動）的顯式描述。
+    &lt;/p&gt;
+    &lt;p&gt;
+        敘事網絡（Narrative Network）提供了一種新的分析範式：將文本視為&lt;strong&gt;事件序列&lt;/strong&gt;而非靜態詞集，強調行動者、行動和受事者之間的&lt;strong&gt;結構化互動&lt;/strong&gt;。換言之，敘事網絡關注「誰」（施事者）、「對誰」（受事者）、「做了什麼」（動作），從而捕捉文本中的因果脈絡和責任歸屬。這種範式轉變讓我們得以超越話題探討層面，深入研究語篇如何塑造社會認知與權力結構。
+    &lt;/p&gt;
+
+    &lt;p&gt;下表概括了傳統共詞分析與敘事網絡範式的區別：&lt;/p&gt;
+
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;分析維度&lt;/th&gt;
+                &lt;th&gt;共詞網絡 (Co-word Network)&lt;/th&gt;
+                &lt;th&gt;敘事網絡 (Narrative Network)&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;基本單元&lt;/td&gt;
+                &lt;td&gt;詞彙 A – 詞彙 B（共現關係）&lt;/td&gt;
+                &lt;td&gt;施事者 – 動作 – 受事者（事件三元組）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;連接依據&lt;/td&gt;
+                &lt;td&gt;統計關聯（詞頻/共現）&lt;/td&gt;
+                &lt;td&gt;語義互動（角色關係）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;網絡類型&lt;/td&gt;
+                &lt;td&gt;無向圖（Undirected）&lt;/td&gt;
+                &lt;td&gt;有向圖（Directed）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;可解釋性&lt;/td&gt;
+                &lt;td&gt;話題相關度（討論內容）&lt;/td&gt;
+                &lt;td&gt;行動邏輯（誰對誰做了什麼）&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;
+        敘事網絡通過保留事件結構，大幅增強了對社會現實構建過程的解釋力。例如，Sudhahar 等人使用新聞報導的主謂賓關係構建網絡，發現美國大選語料中自發形成了支持與反對的兩大陣營。總體而言，相較於傳統詞彙共現分析，敘事網絡能更好地揭示文本背後的權力關係和因果鏈條，是政治傳播、輿情分析等領域強有力的工具。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第一部分：理論視角——從話題挖掘到敘事解析&lt;/h2&gt;
+    &lt;p&gt;
+        文本分析正經歷從「識別顯性話題」向「解析隱含敘事」的範式轉變。傳統方法著重於顯性內容（如高頻詞、主題），而敘事解析則關注隱含結構（如角色互動、事件邏輯）。這種轉變背後有幾點理論動因：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;人類是「講故事的動物」&lt;/strong&gt;：敘事被視為人類理解和組織現實的基本方式。線上的敘事動態（如話題涌現、競爭、消亡）會對現實社會產生深遠影響。因此，理解網絡輿論中的敘事結構有助於解讀輿情走向與輿論影響。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;詞袋模型的局限&lt;/strong&gt;：傳統文本表示忽略了語序與句法，導致我們無法區分「狗咬人」與「人咬狗」這樣意義迥異的敘事。相反，敘事分析強調謂詞及其論元角色，精確捕捉「誰做了什麼」的關係。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;解釋社會互動&lt;/strong&gt;：敘事網絡將文本轉化為角色-事件圖譜，使研究者得以從全局角度審視互動模式。例如，可透過網絡中心度辨識輿論場中的核心行動者，或通過子群發現特定議題的敘事共同體。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;blockquote&gt;
+        Robert Allen 等人形象地指出，將劇情的時間流程轉化為「二維網絡圖」，可使結構一目了然。總之，應用網絡方法於敘事分析，能讓我們在宏觀上捕捉文本敘事的對稱性與結構特徵，並量化分析角色間的權力互動。
+    &lt;/blockquote&gt;
+
+    &lt;h2&gt;第二部分：核心技術——語義角色標注 (SRL)&lt;/h2&gt;
+    &lt;p&gt;
+        語義角色標注（Semantic Role Labeling, SRL）是構建敘事網絡的基石。SRL 的任務是解析句子中謂詞（通常為動詞）及其相關的參與者（論元）角色，即識別「誰在何時何地對誰做了什麼」。這一過程可以視為自動為句子加註劇本角色表。
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;謂詞（Predicate）&lt;/strong&gt;：通常為句子的主要動詞，表示一個動作或事件。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;論元（Arguments）&lt;/strong&gt;：與該動作相關的參與者及要素，每個論元扮演特定的語義角色（Semantic Role）。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;以 PropBank 標註體系為例，常見的語義角色包括：&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;ARG0&lt;/strong&gt;：施事者（Agent），動作的發起者，對應原型施動者。例如在句子「政府推出了新政策」中，&lt;strong&gt;政府&lt;/strong&gt;是 ARG0。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARG1&lt;/strong&gt;：受事者（Patient），動作的承受者或作用對象。上述例子中，&lt;strong&gt;新政策&lt;/strong&gt;是 ARG1。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;ARGM&lt;/strong&gt;：附加參數（Modifier），包括時間（TMP）、地點（LOC）、方式（MNR）等修飾資訊，用於描述動作發生的情境。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        透過 SRL，非結構化的自然語言被轉換為結構化的事件描述。例如句子 &lt;code&gt;&quot;The CDC confirms the first coronavirus case.&quot;&lt;/code&gt; 經過 SRL 解析後，可得到如下結構：&lt;br&gt;
+        &lt;code&gt;[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case]&lt;/code&gt;&lt;br&gt;
+        清晰地表達了「誰做了什麼事」。
+    &lt;/p&gt;
+    
+    &lt;h3&gt;SRL 工具與模型&lt;/h3&gt;
+    &lt;p&gt;
+        早期的 SRL 系統如 SENNA 就已能自動標注簡單句子的語義角色。近年來，由於預訓練語言模型（如 BERT）的出現，SRL 準確率有了大幅提升。例如 AllenNLP 平台提供了開箱即用的 SRL 模型——一個基於 BERT 的語義角色標注器。我們可以利用該模型快速對文本進行語義解析，無需從零開始訓練。
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;代碼示例：使用 AllenNLP 進行語義解析&lt;/strong&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;from allennlp.predictors import Predictor
+</code></pre>
+<h1 id="加載預訓練的-bert-srl-模型本地路徑或-url">加載預訓練的 BERT-SRL 模型（本地路徑或 URL）<a hidden class="anchor" aria-hidden="true" href="#加載預訓練的-bert-srl-模型本地路徑或-url">#</a></h1>
+<p>predictor = Predictor.from_path(&ldquo;srl-bert.2020.12.15.tar.gz&rdquo;)</p>
+<h1 id="輸入待解析句子">輸入待解析句子<a hidden class="anchor" aria-hidden="true" href="#輸入待解析句子">#</a></h1>
+<p>sentence = &ldquo;The CDC confirms the first coronavirus case.&rdquo;
+result = predictor.predict(sentence=sentence)</p>
+<h1 id="輸出語義角色標注結果">輸出語義角色標注結果<a hidden class="anchor" aria-hidden="true" href="#輸出語義角色標注結果">#</a></h1>
+<p>for verb in result[&lsquo;verbs&rsquo;]:
+print(verb[&lsquo;description&rsquo;])</p>
+<h1 id="預期輸出">預期輸出：<a hidden class="anchor" aria-hidden="true" href="#預期輸出">#</a></h1>
+<h1 id="arg0-the-cdc-v-confirms-arg1-the-first-coronavirus-case-">[ARG0: The CDC] [V: confirms] [ARG1: the first coronavirus case] .<!-- raw HTML omitted --><!-- raw HTML omitted --><a hidden class="anchor" aria-hidden="true" href="#arg0-the-cdc-v-confirms-arg1-the-first-coronavirus-case-">#</a></h1>
+<pre><code>    &lt;p&gt;
+        技術要點：為了提高 SRL 的效果，研究者們引入了多種語義資源和技巧。例如，使用更豐富的語料（如 PropBank 或 FrameNet）進行模型訓練，以捕捉動詞的多義性；結合詞嵌入與語法特徵以增強模型對長句的解析能力。總之，現代 SRL 技術已相當成熟，為後續的敘事網絡構建打下堅實基礎。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第三部分：敘事聚合——從微觀事件到宏觀網絡&lt;/h2&gt;
+    &lt;p&gt;
+        經 SRL 解析後，我們將獲得海量微觀的敘事碎片（事件三元組）。但這些原始三元組往往非常稀疏且充斥噪音。為了從中抽取穩健的集體敘事，需要對碎片進行聚合和歸一化處理，使相似的角色和同義的動作歸併為統一的節點或關係。
+    &lt;/p&gt;
+    &lt;p&gt;聚合的核心步驟包括：&lt;/p&gt;
+    &lt;ol&gt;
+        &lt;li&gt;
+            &lt;strong&gt;動詞標準化（Verb Normalization）&lt;/strong&gt;：將語料中意義相近但表達不同的動詞歸並到統一的語義框架下。例如將 “支持”（support）、 “背書”（endorse）、 “力挺”（back）等動詞都映射為「支持類」的通用動作。為實現這一點，可以利用 &lt;strong&gt;VerbAtlas&lt;/strong&gt; 等大型詞彙資源。VerbAtlas 手工構建了動詞同義詞與框架的對應關係，將 5,649 個具體動詞歸納為 466 個通用謂詞框架。通過這種標準化，我們可以將語料中的大量原始三元組進行壓縮。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;論元聚類（Argument Clustering）&lt;/strong&gt;：解決不同表述指代同一實體的問題。比如語料中出現的 “美利堅合眾國”、“美國”、“USA” 顯然是同一實體。我們可以利用 &lt;strong&gt;語義嵌入+聚類&lt;/strong&gt; 的方法來自動合併這些別名實體。實踐中，常使用 Sentence-BERT 將每個論元短語向量化，然後採用凝聚層次聚類（Hierarchical Clustering）或密度聚類方法，根據語義距離將相似實體歸為一類。
+        &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;
+        上述兩步驟將大量冗餘的事件碎片進行了語義壓縮。動詞的多樣表達被壓縮到有限的框架，實體的別名被合併為單一節點。如此處理後，我們得到了較為精簡且規範化的敘事事件集。
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;代碼示例：敘事聚合（動詞標準化 + 論元向量聚類）&lt;/strong&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;from sentence_transformers import SentenceTransformer
+</code></pre>
+<p>from sklearn.cluster import AgglomerativeClustering</p>
+<h1 id="範例實體列表待聚類的-arg-論元短語">範例實體列表（待聚類的 ARG 論元短語）<a hidden class="anchor" aria-hidden="true" href="#範例實體列表待聚類的-arg-論元短語">#</a></h1>
+<p>entities = [&ldquo;United States&rdquo;, &ldquo;USA&rdquo;, &ldquo;U.S.&rdquo;, &ldquo;every Asian person&rdquo;, &ldquo;Asian people&rdquo;]</p>
+<h1 id="1-實體語義向量化">1. 實體語義向量化<a hidden class="anchor" aria-hidden="true" href="#1-實體語義向量化">#</a></h1>
+<p>embedder = SentenceTransformer(&lsquo;all-MiniLM-L6-v2&rsquo;)
+embeddings = embedder.encode(entities)</p>
+<h1 id="2-語義聚類凝聚層次聚類">2. 語義聚類（凝聚層次聚類）<a hidden class="anchor" aria-hidden="true" href="#2-語義聚類凝聚層次聚類">#</a></h1>
+<p>clustering = AgglomerativeClustering(
+n_clusters=None,
+distance_threshold=0.4,
+affinity=&lsquo;cosine&rsquo;,
+linkage=&lsquo;average&rsquo;
+)
+labels = clustering.fit_predict(embeddings)</p>
+<h1 id="輸出每個實體的所屬聚類標籤">輸出每個實體的所屬聚類標籤<a hidden class="anchor" aria-hidden="true" href="#輸出每個實體的所屬聚類標籤">#</a></h1>
+<p>for entity, label in zip(entities, labels):
+print(entity, &quot; -&gt; Cluster&quot;, label)</p>
+<h1 id="輸出示例">輸出示例：<a hidden class="anchor" aria-hidden="true" href="#輸出示例">#</a></h1>
+<h1 id="united-states----cluster-0">United States  -&gt; Cluster 0<a hidden class="anchor" aria-hidden="true" href="#united-states----cluster-0">#</a></h1>
+<h1 id="usa--------------cluster-0">USA            -&gt; Cluster 0<a hidden class="anchor" aria-hidden="true" href="#usa--------------cluster-0">#</a></h1>
+<h1 id="us-------------cluster-0">U.S.           -&gt; Cluster 0<a hidden class="anchor" aria-hidden="true" href="#us-------------cluster-0">#</a></h1>
+<h1 id="every-asian-person---cluster-5">every Asian person -&gt; Cluster 5<a hidden class="anchor" aria-hidden="true" href="#every-asian-person---cluster-5">#</a></h1>
+<h1 id="asian-people-----cluster-5">Asian people   -&gt; Cluster 5<!-- raw HTML omitted --><!-- raw HTML omitted --><a hidden class="anchor" aria-hidden="true" href="#asian-people-----cluster-5">#</a></h1>
+<pre><code>    &lt;h2&gt;第四部分：網絡構建與可視分析&lt;/h2&gt;
+    &lt;p&gt;
+        經過動詞和實體的聚合標準化後，我們得到了較為「乾淨」的事件列表。接下來需要將這些事件組織為敘事網絡結構，以便進一步的定量分析與視覺化。
+    &lt;/p&gt;
+    
+    &lt;h3&gt;1. 敘事網絡的定義&lt;/h3&gt;
+    &lt;p&gt;敘事網絡本質上是一個&lt;strong&gt;有向帶權圖（directed weighted graph）&lt;/strong&gt;。在我們的框架中：&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;節點（Nodes）&lt;/strong&gt;：網絡中的節點代表敘事中的行動者（Actor）或受事者（Actant）。通常來說，就是論元聚合後得到的實體類別。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;邊（Edges）&lt;/strong&gt;：節點之間的有向連線表示一種敘事關係，通常對應一個謂詞框架。邊從 ARG0 指向 ARG1，並帶有動詞標籤，表示「主體對客體施加了某種行為」。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;權重（Weights）&lt;/strong&gt;：每條邊可賦予一個權重，表示該關係的重要性或強度。最簡單的權重是邊對應事件在語料中的出現頻次。更嚴謹的方法則可採用對數機率比（Log-Odds Ratio）等統計度量，以衡量某事件相對於基線的顯著性。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        上述結構定義使敘事網絡具備了豐富的分析空間：我們可以研究入度最高的節點（最常被施加行動者），或探查出現頻率最高的動作（可能代表該語境下的核心敘事）。此外，透過網絡子群偵測，我們還能發現敘事上的陣營分化（例如支持 vs 反對的兩群角色）。
+    &lt;/p&gt;
+
+    &lt;h3&gt;2. 骨幹提取與降噪&lt;/h3&gt;
+    &lt;p&gt;
+        現實語料庫所構建的初始網絡通常非常龐大且複雜，其中充斥大量僅出現過幾次的邊。為了突出主要的敘事脈絡，我們需要對網絡進行降噪處理。一種有效的方法是提取網絡的&lt;strong&gt;多尺度骨幹（Multiscale Backbone）&lt;/strong&gt;。
+    &lt;/p&gt;
+    &lt;p&gt;
+        多尺度骨幹提取（Serrano 等, 2009）：該算法基於統計顯著性，從加權網絡中篩選出具有顯著連接強度的邊。具體而言，對於每個節點，假設其連接邊的權重分佈服從一定隨機過程，計算每條邊權重成為「超出隨機預期」的概率，並以顯著性水平 α 作為閾值保留邊。透過調整 α，研究者可以在保留網絡主要結構的同時，大幅削減弱聯繫邊數量，使網絡結構更清晰。
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;代碼示例：簡化的網絡構建與骨幹過濾流程&lt;/strong&gt;&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;import networkx as nx
+</code></pre>
+<h1 id="構建有向加權圖">構建有向加權圖<a hidden class="anchor" aria-hidden="true" href="#構建有向加權圖">#</a></h1>
+<p>G = nx.DiGraph()
+for (subj, verb, obj) in aggregated_triplets:  # 三元組列表
+G.add_edge(subj, obj, label=verb,
+weight=G[subj][obj][&lsquo;weight&rsquo;]+1 if G.has_edge(subj, obj) else 1)</p>
+<h1 id="骨幹提取僅保留權重超過平均值的邊簡單示例">骨幹提取：僅保留權重超過平均值的邊（簡單示例）<a hidden class="anchor" aria-hidden="true" href="#骨幹提取僅保留權重超過平均值的邊簡單示例">#</a></h1>
+<p>avg_weight = sum([d[&lsquo;weight&rsquo;] for <em>,</em>,d in G.edges(data=True)]) / G.number_of_edges()
+backbone_edges = [(u,v,d) for u,v,d in G.edges(data=True)
+if d[&lsquo;weight&rsquo;] &gt;= avg_weight]</p>
+<p>G_core = nx.DiGraph()
+G_core.add_edges_from(backbone_edges)</p>
+<h1 id="過濾後網絡統計">過濾後網絡統計<a hidden class="anchor" aria-hidden="true" href="#過濾後網絡統計">#</a></h1>
+<p>print(&ldquo;骨幹節點數：&rdquo;, G_core.number_of_nodes())
+print(&ldquo;骨幹邊數：&rdquo;, G_core.number_of_edges())<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<pre><code>    &lt;h3&gt;3. 網絡視覺化與交互分析&lt;/h3&gt;
+    &lt;p&gt;
+        構建好的敘事網絡可以透過可視化來直觀展示其結構特徵。傳統的節點-鏈接圖適合描繪敘事網絡。為了增強分析效果，我們可以引入以下策略：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;交互式圖譜&lt;/strong&gt;：使用如 PyVis、D3.js 等庫生成可交互的網絡圖。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;物理引擎佈局&lt;/strong&gt;：將節點視為帶電粒子，引入引力和斥力進行佈局，使得連接緊密的節點自動聚攏，往往能突出網絡中的社群結構（clusters）。&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;樣式編碼&lt;/strong&gt;：利用節點大小、顏色編碼節點的度中心性或類別；使用邊的顏色、粗細表示不同類型的動詞或關聯強度。例如將敘事網絡中的邊分為支持（藍）和衝突（紅）兩類。&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        通過以上手段，我們最終可以獲得一幅清晰、易讀的敘事網絡圖譜。研究者可以在圖譜中直觀識別出敘事核心（高度連結的中心節點）以及敘事子情節（邊緣的小型集群）。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第五部分：實證應用與發現&lt;/h2&gt;
+    &lt;p&gt;
+        基於上述方法構建的敘事網絡，已在多項研究中展示出強大的分析能力。Zhao 等人將這一框架應用於 2017 年法國大選和 COVID-19 推特語料，驗證了其有效性。以下是幾項關鍵發現：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;strong&gt;角色形象與敘事分化&lt;/strong&gt;：在法國大選推文網絡中，兩位主要候選人（馬克宏和勒龐）所處的敘事位置明顯不同。勒龐節點周圍聚集了大量帶有負面意涵的動作（如「攻擊」「指責」等），反映其在輿論敘事中飽受爭議；相對而言，馬克宏節點主要連接著中性或與競選活動相關的動作（如「舉行造勢」「拜訪選民」等）。兩者對比凸顯出輿論如何透過不同的動詞框架來塑造候選人形象。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;事件驅動的敘事變遷&lt;/strong&gt;：透過對不同比時間窗的敘事網絡進行觀察，研究者發現敘事轉折點往往與現實中的重大事件高度吻合。Zhao 等人利用變化點檢測算法捕捉到了這些敘事轉變時刻，例如在法國大選推文中偵測到的敘事轉折點恰好對應了 #MacronLeaks 醜聞爆發和正式就職日等關鍵節點。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;網絡結構特徵&lt;/strong&gt;：敘事網絡的拓撲結構揭示了輿論場的&lt;strong&gt;核心-邊緣&lt;/strong&gt;分佈。一小部分高中心性節點（通常是核心行動者）構成了網絡的「核心」，它們之間通過多條有向邊緊密相連，形成輿論敘事的主幹。相反，其他次要角色或具體事件則處於「邊緣」。這種中心-邊陲的圖譜形態，揭示了輿論如何圍繞少數關鍵角色展開，同時涵蓋多維度議題。
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+        綜上，實證應用表明敘事網絡方法能同時提供微觀的語義解讀（單個事件的角色關係）和宏觀的結構洞察（整體敘事格局）。這使其成為理解線上輿情與社會敘事動態的有力工具。
+    &lt;/p&gt;
+
+    &lt;h2&gt;第六部分：前沿方向與挑戰展望&lt;/h2&gt;
+    &lt;p&gt;敘事網絡分析作為一種新興範式，仍有廣闊的拓展空間和挑戰有待解決。&lt;/p&gt;
+
+    &lt;h3&gt;1. 跨模態敘事解析&lt;/h3&gt;
+    &lt;p&gt;
+        人類的敘事不僅存在於文字中，也透過圖像、視頻等多媒體形式傳播。全新的多模態敘事提取技術正在興起：
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;strong&gt;視覺語義角色標注（Visual SRL）&lt;/strong&gt;：目標是讓模型從圖像中產生一個簡潔的事件描述。例如給定一張剪羊毛的照片，模型應識別出「男人在剪羊毛」，並標出角色：「男人（理髮者）」「羊（被剪對象）」「剪刀（工具）」等。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;視頻事件敘事（Video SRL）&lt;/strong&gt;：視頻中包含完整的事件發生過程。模型需要依序識別「人物1 開門」「人物1 呼喚寵物」「寵物 跑向 人物1」這樣的事件序列，並推斷角色間的連續關係。隨著視頻理解技術的發展，未來有望將這些從多媒體中提取的事件融入整體敘事網絡，形成跨模態的敘事圖譜。
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;2. 技術局限與研發挑戰&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;strong&gt;隱喻與反諷理解&lt;/strong&gt;：網絡輿論中充斥著隱喻、反諷、梗文化（memes）。目前的 SRL 模型主要針對顯性語義，對於「話裡有話」的隱含意義往往束手無策。這可能在敘事網絡中引入偏差。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;跨句敘事鏈抽取&lt;/strong&gt;：現有方法多在單句範圍內抽取事件，然而很多敘事脈絡跨越多個句子。如何讓模型將這些分散在多句中的線索串聯起來，構建更加完整的跨句敘事鏈，是下一步需要解決的問題。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;指代消解與角色連貫&lt;/strong&gt;：敘事網絡構建非常依賴實體識別的準確性。如果文本中出現大量代詞，模型需要正確解析其指代的具體對象。指代錯誤可能導致敘事網絡中節點分裂或錯連。
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;大模型與生成式方法&lt;/strong&gt;：大型預訓練語言模型（LLM）的崛起為敘事解析提供了新路徑。與其逐句抽取再聚合，不如讓模型直接閱讀完整文檔後生成一個結構化的敘事圖譜。然而，目前這仍處於探索階段，需要解決生成結果的可控性和一致性問題。
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;結語&lt;/h2&gt;
+    &lt;p&gt;
+        敘事網絡分析作為文本挖掘領域的新興方法，正引領我們從關注詞彙頻率轉向關注行動邏輯。借助 SRL 等技術，我們得以自動擷取大規模文本中的「誰-做了什麼-給了誰」，進而構建出可量化、可視化的敘事全貌。儘管面臨諸多挑戰，隨著多模態融合和更強AI模型的加入，敘事網絡方法的前景十分廣闊。我們有理由相信，在不久的將來，跨文本、圖像、視頻的敘事圖譜將成為社會科學家理解輿論與文化敘事的強大工具，助力揭示隱藏在海量資訊背後的故事脈絡與人類行為邏輯。
+    &lt;/p&gt;
+
+&lt;/article&gt;
+
+&lt;footer class=&quot;references&quot;&gt;
+    &lt;div class=&quot;ref-title&quot;&gt;Reference List (Selected):&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[1] Zhao, W. et al. (2024). Discovering Collective Narratives Shifts in Online Discussions. ICWSM 2024.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[2] Serrano, M. Á. et al. (2009). Extracting the multiscale backbone of complex weighted networks. PNAS, 106(16): 6483–6488.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[3] Yatskar, M. et al. (2016). Situation Recognition: Visual Semantic Role Labeling for Image Understanding. CVPR 2016.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[4] Sadhu, A. et al. (2021). Visual Semantic Role Labeling for Video Understanding. CVPR 2021.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[5] Reimers, N., Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[6] Palmer, M. et al. (2005). The Proposition Bank: An Annotated Corpus of Semantic Roles. Computational Linguistics.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[7] Willaert, T. et al. (2023). Extracting narrative signals from public discourse: a network-based approach. Humanit. Soc. Sci. Commun.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;[8] Collobert, R. et al. (2011). Natural Language Processing (almost) from Scratch. J. Mach. Learn. Res.&lt;/div&gt;
+    &lt;div class=&quot;ref-item&quot;&gt;&lt;a href=&quot;https://github.com/wanyingzhao/collective_narrative_shift&quot; target=&quot;_blank&quot;&gt;[Github: collective_narrative_shift]&lt;/a&gt;&lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://llspublic.github.io/">Lyuxi Liu</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
