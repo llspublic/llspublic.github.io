@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://llspublic.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Computational Social Science</title>
+      <link>https://llspublic.github.io/tags/computational-social-science/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/computational-social-science/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Demo</title>
       <link>https://llspublic.github.io/tags/demo/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
@@ -16,10 +23,38 @@
       <description></description>
     </item>
     <item>
+      <title>Digital Humanities</title>
+      <link>https://llspublic.github.io/tags/digital-humanities/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/digital-humanities/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Life</title>
       <link>https://llspublic.github.io/tags/life/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://llspublic.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Narrative Networks</title>
+      <link>https://llspublic.github.io/tags/narrative-networks/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/narrative-networks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NLP</title>
+      <link>https://llspublic.github.io/tags/nlp/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://llspublic.github.io/tags/python/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://llspublic.github.io/tags/python/</guid>
       <description></description>
     </item>
   </channel>

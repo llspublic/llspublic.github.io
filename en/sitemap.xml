@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://llspublic.github.io/tags/computational-social-science/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://llspublic.github.io/tags/demo/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://llspublic.github.io/tags/digital-humanities/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://llspublic.github.io/tags/life/</loc>
@@ -21,7 +27,16 @@
                 href="https://llspublic.github.io/"
                 />
   </url><url>
+    <loc>https://llspublic.github.io/tags/narrative-networks/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://llspublic.github.io/tags/nlp/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://llspublic.github.io/posts/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://llspublic.github.io/tags/python/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://llspublic.github.io/tags/</loc>
@@ -38,6 +53,9 @@
                 />
   </url><url>
     <loc>https://llspublic.github.io/posts/hello/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://llspublic.github.io/posts/srl/</loc>
     <lastmod>2026-01-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://llspublic.github.io/posts/example1/</loc>
