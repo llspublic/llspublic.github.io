@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Lyuxi Liu</title>
-    <link>https://llspublic.github.io/zh/</link>
-    <description>Recent content on Lyuxi Liu</description>
+    <title>Narrative Networks on Lyuxi Liu</title>
+    <link>https://llspublic.github.io/zh/tags/narrative-networks/</link>
+    <description>Recent content in Narrative Networks on Lyuxi Liu</description>
     <generator>Hugo -- 0.153.2</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://llspublic.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://llspublic.github.io/zh/tags/narrative-networks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入研究叙事网络：从「词频统计」到「结构化行动逻辑」</title>
       <link>https://llspublic.github.io/zh/posts/srl/</link>

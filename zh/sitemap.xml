@@ -2,19 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://llspublic.github.io/zh/categories/</loc>
+    <loc>https://llspublic.github.io/zh/tags/computational-social-science/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://llspublic.github.io/categories/"
+                href="https://llspublic.github.io/tags/computational-social-science/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://llspublic.github.io/zh/categories/"
+                href="https://llspublic.github.io/zh/tags/computational-social-science/"
+                />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/tags/digital-humanities/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/tags/digital-humanities/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/tags/digital-humanities/"
                 />
   </url><url>
     <loc>https://llspublic.github.io/zh/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -26,7 +41,47 @@
                 href="https://llspublic.github.io/zh/"
                 />
   </url><url>
+    <loc>https://llspublic.github.io/zh/tags/narrative-networks/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/tags/narrative-networks/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/tags/narrative-networks/"
+                />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/tags/nlp/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/tags/nlp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/tags/nlp/"
+                />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/tags/python/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/tags/python/"
+                />
+  </url><url>
     <loc>https://llspublic.github.io/zh/tags/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -36,6 +91,31 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://llspublic.github.io/zh/tags/"
+                />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/posts/srl/</loc>
+    <lastmod>2026-01-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/posts/srl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/posts/srl/"
+                />
+  </url><url>
+    <loc>https://llspublic.github.io/zh/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://llspublic.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://llspublic.github.io/zh/categories/"
                 />
   </url>
 </urlset>
